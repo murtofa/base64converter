@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base64 Encoder/Decoder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9; /* Light background for contrast */
+        }
+        h1 {
+            text-align: center; /* Center the main title */
+            color: #333; /* Dark text color */
+        }
+        .container {
+            max-width: 800px; /* Limit width of the content */
+            margin: auto; /* Center the container */
+            padding: 20px; /* Inner padding */
+            background-color: #fff; /* White background for the box */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+        .section {
+            margin-bottom: 30px; /* Space between sections */
+            padding: 20px; /* Inner padding for sections */
+            border-radius: 8px; /* Rounded corners */
+            background-color: #e9ecef; /* Light grey background for sections */
+            border-left: 5px solid #808080; /* Left border set to gray */
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: none;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            border: none;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #encodeButton {
+            background-color: #007bff; /* Blue for Encode */
+        }
+        #decodeButton {
+            background-color: #28a745; /* Green for Decode */
+        }
+        button:hover {
+            opacity: 0.9; /* Slightly fade on hover for feedback */
+        }
+        .result-box {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            position: relative; /* For positioning the copy icon */
+            max-height: 150px; /* Set maximum height for results */
+            overflow-y: auto; /* Allow vertical scrolling */
+        }
+        pre {
+            margin: 0; /* Remove default margins from <pre> */
+        }
+        hr {
+            margin: 30px 0; /* Space above and below the separator */
+            border: 0;
+            border-top: 1px solid #ccc; /* Separator style */
+        }
+        .copy-icon {
+            cursor: pointer;
+            margin-left: 10px; /* Space between text and icon */
+        }
+        .result-header {
+            display: flex; /* Flexbox for alignment */
+            align-items: center; /* Center vertically */
+        }
+        .copy-message {
+            margin-left: 10px;
+            color: green; /* Green color for the message */
+            font-weight: bold; /* Bold text for emphasis */
+            display: none; /* Initially hidden */
+        }
+    </style>
+</head>
+<body>
+    <h1>Base64 Encoder/Decoder</h1>
+
+    <div class="container">
+        <div class="section">
+            <h2>Encoder</h2>
+            <textarea id="encodeInput" placeholder="Enter text to encode..."></textarea>
+            <button id="encodeButton">Encode</button>
+            <div class="result-header">
+                <h3>Encoded Result:</h3>
+                <i class="fas fa-copy copy-icon" id="copyEncode" title="Copy to clipboard" style="color: #007bff;"></i>
+                <span class="copy-message" id="encodeMessage">Copied!</span> <!-- Message for encoding -->
+            </div>
+            <div class="result-box">
+                <pre id="encodedOutput">Waiting for result...</pre>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="section">
+            <h2>Decoder</h2>
+            <textarea id="decodeInput" placeholder="Enter Base64 to decode..."></textarea>
+            <button id="decodeButton">Decode</button>
+            <div class="result-header">
+                <h3>Decoded Result:</h3>
+                <i class="fas fa-copy copy-icon" id="copyDecode" title="Copy to clipboard"></i>
+                <span class="copy-message" id="decodeMessage">Copied!</span> <!-- Message for decoding -->
+            </div>
+            <div class="result-box">
+                <pre id="decodedOutput">Waiting for result...</pre>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('encodeButton').addEventListener('click', async () => {
+            const text = document.getElementById('encodeInput').value;
+            const response = await fetch('/encode', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text }),
+            });
+            const data = await response.json();
+            document.getElementById('encodedOutput').innerText = data.encodedText;
+        });
+
+        document.getElementById('decodeButton').addEventListener('click', async () => {
+            const base64 = document.getElementById('decodeInput').value;
+            const response = await fetch('/decode', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ base64 }),
+            });
+            const data = await response.json();
+            document.getElementById('decodedOutput').innerText = data.decodedText;
+        });
+
+        // Function to copy text to clipboard and show the message
+        function copyToClipboard(text, messageId) {
+            navigator.clipboard.writeText(text).then(() => {
+                const messageElement = document.getElementById(messageId);
+                messageElement.style.display = 'inline'; // Show the copied message
+                setTimeout(() => {
+                    messageElement.style.display = 'none'; // Hide after 2 seconds
+                }, 2000);
+            }, () => {
+                console.error('Failed to copy!'); // Log error in console
+            });
+        }
+
+        // Event listeners for copy icons
+        document.getElementById('copyEncode').addEventListener('click', () => {
+            const encodedText = document.getElementById('encodedOutput').innerText;
+            copyToClipboard(encodedText, 'encodeMessage');
+        });
+
+        document.getElementById('copyDecode').addEventListener('click', () => {
+            const decodedText = document.getElementById('decodedOutput').innerText;
+            copyToClipboard(decodedText, 'decodeMessage');
+        });
+    </script>
+</body>
+</html>
