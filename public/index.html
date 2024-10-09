@@ -9,26 +9,26 @@
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
-            background-color: #f4f4f9; /* Light background for contrast */
+            background-color: #f4f4f9;
         }
         h1 {
-            text-align: center; /* Center the main title */
-            color: #333; /* Dark text color */
+            text-align: center;
+            color: #333;
         }
         .container {
-            max-width: 800px; /* Limit width of the content */
-            margin: auto; /* Center the container */
-            padding: 20px; /* Inner padding */
-            background-color: #fff; /* White background for the box */
-            border-radius: 8px; /* Rounded corners */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         .section {
-            margin-bottom: 30px; /* Space between sections */
-            padding: 20px; /* Inner padding for sections */
-            border-radius: 8px; /* Rounded corners */
-            background-color: #e9ecef; /* Light grey background for sections */
-            border-left: 5px solid #808080; /* Left border set to gray */
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #e9ecef;
+            border-left: 5px solid #808080;
         }
         textarea {
             width: 100%;
@@ -55,38 +55,38 @@
             background-color: #28a745; /* Green for Decode */
         }
         button:hover {
-            opacity: 0.9; /* Slightly fade on hover for feedback */
+            opacity: 0.9;
         }
         .result-box {
             border: 1px solid #ccc;
             border-radius: 4px;
             padding: 10px;
             background-color: #f9f9f9;
-            position: relative; /* For positioning the copy icon */
-            max-height: 150px; /* Set maximum height for results */
-            overflow-y: auto; /* Allow vertical scrolling */
+            position: relative;
+            max-height: 150px;
+            overflow-y: auto;
         }
         pre {
-            margin: 0; /* Remove default margins from <pre> */
+            margin: 0;
         }
         hr {
-            margin: 30px 0; /* Space above and below the separator */
+            margin: 30px 0;
             border: 0;
-            border-top: 1px solid #ccc; /* Separator style */
+            border-top: 1px solid #ccc;
         }
         .copy-icon {
             cursor: pointer;
-            margin-left: 10px; /* Space between text and icon */
+            margin-left: 10px;
         }
         .result-header {
-            display: flex; /* Flexbox for alignment */
-            align-items: center; /* Center vertically */
+            display: flex;
+            align-items: center;
         }
         .copy-message {
             margin-left: 10px;
-            color: green; /* Green color for the message */
-            font-weight: bold; /* Bold text for emphasis */
-            display: none; /* Initially hidden */
+            color: green;
+            font-weight: bold;
+            display: none;
         }
     </style>
 </head>
@@ -101,7 +101,7 @@
             <div class="result-header">
                 <h3>Encoded Result:</h3>
                 <i class="fas fa-copy copy-icon" id="copyEncode" title="Copy to clipboard" style="color: #007bff;"></i>
-                <span class="copy-message" id="encodeMessage">Copied!</span> <!-- Message for encoding -->
+                <span class="copy-message" id="encodeMessage">Copied!</span>
             </div>
             <div class="result-box">
                 <pre id="encodedOutput">Waiting for result...</pre>
@@ -116,8 +116,8 @@
             <button id="decodeButton">Decode</button>
             <div class="result-header">
                 <h3>Decoded Result:</h3>
-                <i class="fas fa-copy copy-icon" id="copyDecode" title="Copy to clipboard"></i>
-                <span class="copy-message" id="decodeMessage">Copied!</span> <!-- Message for decoding -->
+                <i class="fas fa-copy copy-icon" id="copyDecode" title="Copy to clipboard" style="color: #28a745;"></i>
+                <span class="copy-message" id="decodeMessage">Copied!</span>
             </div>
             <div class="result-box">
                 <pre id="decodedOutput">Waiting for result...</pre>
@@ -152,12 +152,12 @@
         function copyToClipboard(text, messageId) {
             navigator.clipboard.writeText(text).then(() => {
                 const messageElement = document.getElementById(messageId);
-                messageElement.style.display = 'inline'; // Show the copied message
+                messageElement.style.display = 'inline';
                 setTimeout(() => {
-                    messageElement.style.display = 'none'; // Hide after 2 seconds
+                    messageElement.style.display = 'none';
                 }, 2000);
             }, () => {
-                console.error('Failed to copy!'); // Log error in console
+                console.error('Failed to copy!');
             });
         }
 
