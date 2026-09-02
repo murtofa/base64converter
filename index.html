@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1, viewport-fit=cover"
@@ -32,6 +33,7 @@
             --red-soft: #fff1f2;
 
             --input: #f8fafc;
+
             --radius: 18px;
         }
 
@@ -41,6 +43,7 @@
 
         body {
             margin: 0;
+
             background: var(--bg);
             color: var(--text);
 
@@ -63,6 +66,7 @@
 
         button {
             -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
 
         .app {
@@ -75,7 +79,10 @@
                 max(30px, env(safe-area-inset-bottom));
         }
 
-        /* Header */
+
+        /* =====================================================
+           HEADER
+           ===================================================== */
 
         .app-header {
             margin-bottom: 18px;
@@ -83,28 +90,37 @@
 
         .app-header h1 {
             margin: 0;
+
             font-size: clamp(27px, 5vw, 38px);
             letter-spacing: -1px;
         }
 
         .app-header p {
             margin: 7px 0 0;
+
             color: var(--muted);
+
             font-size: 14px;
         }
 
-        /* Main tabs */
+
+        /* =====================================================
+           MAIN NAVIGATION
+           ===================================================== */
 
         .main-nav {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
+
             gap: 5px;
 
             width: 100%;
+
             padding: 5px;
             margin-bottom: 20px;
 
             background: #e9eef6;
+
             border-radius: 15px;
         }
 
@@ -118,6 +134,7 @@
             border-radius: 11px;
 
             background: transparent;
+
             color: #64748b;
 
             font-size: 14px;
@@ -132,14 +149,17 @@
         }
 
         .nav-btn.active {
-            background: white;
+            background: #ffffff;
             color: var(--primary);
 
             box-shadow:
                 0 1px 4px rgba(15, 23, 42, .10);
         }
 
-        /* Pages */
+
+        /* =====================================================
+           PAGES
+           ===================================================== */
 
         .page {
             display: none;
@@ -149,7 +169,10 @@
             display: block;
         }
 
-        /* Generic */
+
+        /* =====================================================
+           COMMON
+           ===================================================== */
 
         .page-heading {
             margin-bottom: 17px;
@@ -157,13 +180,16 @@
 
         .page-heading h2 {
             margin: 0 0 5px;
+
             font-size: 23px;
             letter-spacing: -.4px;
         }
 
         .page-heading p {
             margin: 0;
+
             color: var(--muted);
+
             font-size: 14px;
             line-height: 1.5;
         }
@@ -171,12 +197,12 @@
         .card {
             min-width: 0;
 
+            padding: 20px;
+
             background: var(--card);
 
             border: 1px solid var(--border);
             border-radius: var(--radius);
-
-            padding: 20px;
 
             box-shadow:
                 0 2px 8px rgba(15, 23, 42, .035);
@@ -189,12 +215,14 @@
         .grid-2 {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
+
             gap: 18px;
         }
 
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
+
             gap: 18px;
         }
 
@@ -208,6 +236,7 @@
 
         .field-label {
             display: block;
+
             margin-bottom: 6px;
 
             color: var(--muted);
@@ -224,7 +253,7 @@
             border: 1px solid var(--border);
             border-radius: 12px;
 
-            background: white;
+            background: #ffffff;
             color: var(--text);
 
             outline: none;
@@ -239,14 +268,17 @@
         input,
         select {
             min-height: 48px;
+
             padding: 10px 13px;
         }
 
         textarea {
             min-height: 145px;
+
             padding: 13px;
 
             resize: vertical;
+
             line-height: 1.45;
 
             font-family:
@@ -268,6 +300,7 @@
         .actions {
             display: flex;
             flex-wrap: wrap;
+
             gap: 8px;
 
             margin-top: 12px;
@@ -289,7 +322,7 @@
 
         .btn-primary {
             background: var(--primary);
-            color: white;
+            color: #ffffff;
         }
 
         .btn-primary:hover {
@@ -298,7 +331,7 @@
 
         .btn-green {
             background: var(--green);
-            color: white;
+            color: #ffffff;
         }
 
         .btn-light {
@@ -315,12 +348,17 @@
             color: var(--red) !important;
         }
 
-        /* Calculator */
+
+        /* =====================================================
+           CALCULATOR
+           ===================================================== */
 
         .calculator-layout {
             display: grid;
             grid-template-columns: minmax(310px, 440px) 1fr;
+
             gap: 18px;
+
             align-items: start;
         }
 
@@ -339,9 +377,11 @@
             justify-content: flex-end;
 
             background: #111827;
+
             border-radius: 16px;
 
             text-align: right;
+
             overflow: hidden;
         }
 
@@ -353,11 +393,12 @@
             color: #9ca3af;
 
             font-size: 13px;
+
             word-break: break-word;
         }
 
         .calculator-value {
-            color: white;
+            color: #ffffff;
 
             font-size: clamp(29px, 7vw, 40px);
             font-weight: 700;
@@ -369,6 +410,7 @@
         .calculator-buttons {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
+
             gap: 8px;
         }
 
@@ -380,6 +422,7 @@
             border-radius: 14px;
 
             background: #f1f5f9;
+
             color: var(--text);
 
             cursor: pointer;
@@ -408,10 +451,13 @@
 
         .calc-key.equals {
             background: var(--primary);
-            color: white;
+            color: #ffffff;
         }
 
-        /* History */
+
+        /* =====================================================
+           HISTORY
+           ===================================================== */
 
         .history-header {
             display: flex;
@@ -420,12 +466,15 @@
             align-items: center;
 
             gap: 10px;
+
             flex-wrap: wrap;
         }
 
         .history-title {
             display: flex;
+
             align-items: center;
+
             gap: 8px;
         }
 
@@ -439,6 +488,7 @@
             border-radius: 999px;
 
             background: #eef2f7;
+
             color: var(--muted);
 
             font-size: 12px;
@@ -474,8 +524,9 @@
         }
 
         .history-expression {
-            font-size: 13px;
             color: var(--muted);
+
+            font-size: 13px;
 
             overflow-wrap: anywhere;
         }
@@ -493,11 +544,14 @@
             margin-top: 4px;
 
             color: #9ca3af;
+
             font-size: 11px;
         }
 
         .delete-history {
             flex-shrink: 0;
+
+            padding: 7px;
 
             border: 0;
 
@@ -505,8 +559,6 @@
             color: var(--red);
 
             cursor: pointer;
-
-            padding: 7px;
 
             font-size: 13px;
             font-weight: 650;
@@ -518,10 +570,14 @@
             color: var(--muted);
 
             text-align: center;
+
             font-size: 14px;
         }
 
-        /* Percentage */
+
+        /* =====================================================
+           PERCENTAGE
+           ===================================================== */
 
         .percentage-card {
             display: flex;
@@ -530,6 +586,7 @@
 
         .percentage-card h3 {
             margin-bottom: 5px;
+
             font-size: 17px;
         }
 
@@ -556,6 +613,7 @@
             border-radius: 12px;
 
             background: var(--primary-soft);
+
             color: #1e40af;
 
             font-size: 17px;
@@ -568,6 +626,7 @@
             margin-top: 8px;
 
             background: var(--green-soft);
+
             color: #047857;
         }
 
@@ -575,15 +634,20 @@
             margin-top: 18px;
         }
 
-        /* Times */
+
+        /* =====================================================
+           TIMES TABLE
+           ===================================================== */
 
         .times-wrapper {
-            max-width: 700px;
+            max-width: 760px;
         }
 
         .times-selector {
             display: flex;
+
             align-items: end;
+
             gap: 12px;
 
             margin-bottom: 20px;
@@ -591,12 +655,28 @@
 
         .times-selector .field {
             width: 220px;
+
             margin: 0;
         }
 
+        /*
+         * WEB:
+         * left column = 1 to 5
+         * right column = 6 to 10
+         */
+
         .times-table {
             display: grid;
+
             grid-template-columns: repeat(2, minmax(0, 1fr));
+
+            gap: 14px;
+        }
+
+        .times-column {
+            display: flex;
+            flex-direction: column;
+
             gap: 9px;
         }
 
@@ -605,13 +685,12 @@
 
             grid-template-columns:
                 minmax(0, 1fr)
-                auto
+                24px
                 minmax(0, 1fr);
 
             align-items: center;
-            gap: 8px;
 
-            min-height: 54px;
+            min-height: 56px;
 
             padding: 11px 16px;
 
@@ -630,16 +709,23 @@
 
         .times-equals {
             color: var(--muted);
+
+            text-align: center;
         }
 
         .times-answer {
             color: var(--primary);
 
+            text-align: left;
+
             font-size: 18px;
             font-weight: 750;
         }
 
-        /* Base64 */
+
+        /* =====================================================
+           BASE64
+           ===================================================== */
 
         .base64-card-header {
             display: flex;
@@ -648,6 +734,7 @@
             align-items: center;
 
             gap: 10px;
+
             margin-bottom: 14px;
         }
 
@@ -661,6 +748,7 @@
             border-radius: 999px;
 
             background: var(--primary-soft);
+
             color: var(--primary);
 
             font-size: 11px;
@@ -697,11 +785,17 @@
             word-break: break-word;
 
             user-select: text;
+
+            cursor: text;
         }
 
-        /* Responsive */
+
+        /* =====================================================
+           TABLET
+           ===================================================== */
 
         @media (max-width: 900px) {
+
             .grid-3 {
                 grid-template-columns: 1fr;
             }
@@ -709,9 +803,17 @@
             .calculator-layout {
                 grid-template-columns: 1fr;
             }
+
         }
 
+
+        /* =====================================================
+           PHONE
+           Keep original single-column Times layout.
+           ===================================================== */
+
         @media (max-width: 720px) {
+
             body {
                 background: #f5f7fb;
             }
@@ -739,12 +841,15 @@
 
             .card {
                 padding: 16px;
+
                 border-radius: 17px;
             }
 
             .main-nav {
                 position: sticky;
+
                 top: 8px;
+
                 z-index: 100;
 
                 margin-bottom: 18px;
@@ -755,6 +860,7 @@
 
             .nav-btn {
                 min-height: 44px;
+
                 padding-left: 2px;
                 padding-right: 2px;
 
@@ -769,8 +875,26 @@
                 min-height: 58px;
             }
 
+            /*
+             * PHONE:
+             * Back to one column:
+             * 1,2,3,4,5,6,7,8,9,10
+             */
+
             .times-table {
-                grid-template-columns: 1fr;
+                display: block;
+            }
+
+            .times-column {
+                display: contents;
+            }
+
+            .times-row {
+                margin-bottom: 9px;
+            }
+
+            .times-row:last-child {
+                margin-bottom: 0;
             }
 
             .times-selector {
@@ -780,9 +904,12 @@
             .times-selector .field {
                 width: 100%;
             }
+
         }
 
+
         @media (max-width: 390px) {
+
             .nav-btn {
                 font-size: 12.5px;
             }
@@ -793,7 +920,9 @@
 
             .calc-key {
                 min-height: 54px;
+
                 border-radius: 12px;
+
                 font-size: 18px;
             }
 
@@ -804,7 +933,9 @@
             .history-header .actions .btn {
                 flex: 1;
             }
+
         }
+
     </style>
 </head>
 
@@ -812,10 +943,24 @@
 
 <div class="app">
 
+    <!-- =====================================================
+         HEADER
+         ===================================================== -->
+
     <header class="app-header">
+
         <h1>Utility Tools</h1>
-        <p>Simple everyday tools that run directly in your browser.</p>
+
+        <p>
+            Simple everyday tools that run directly in your browser.
+        </p>
+
     </header>
+
+
+    <!-- =====================================================
+         NAVIGATION
+         ===================================================== -->
 
     <nav class="main-nav">
 
@@ -849,7 +994,10 @@
 
     </nav>
 
-    <!-- CALCULATOR -->
+
+    <!-- =====================================================
+         CALCULATOR
+         ===================================================== -->
 
     <section
         id="calculatorPage"
@@ -857,9 +1005,15 @@
     >
 
         <div class="page-heading">
+
             <h2>Calculator</h2>
-            <p>Quick calculations with parentheses and saved history.</p>
+
+            <p>
+                Quick calculations with parentheses and saved history.
+            </p>
+
         </div>
+
 
         <div class="calculator-layout">
 
@@ -875,12 +1029,12 @@
                     <div
                         id="calculatorDisplay"
                         class="calculator-value"
-                        aria-live="polite"
                     >
                         0
                     </div>
 
                 </div>
+
 
                 <div class="calculator-buttons">
 
@@ -912,9 +1066,18 @@
                         ÷
                     </button>
 
-                    <button class="calc-key" data-value="7">7</button>
-                    <button class="calc-key" data-value="8">8</button>
-                    <button class="calc-key" data-value="9">9</button>
+
+                    <button class="calc-key" data-value="7">
+                        7
+                    </button>
+
+                    <button class="calc-key" data-value="8">
+                        8
+                    </button>
+
+                    <button class="calc-key" data-value="9">
+                        9
+                    </button>
 
                     <button
                         class="calc-key operation"
@@ -923,9 +1086,18 @@
                         ×
                     </button>
 
-                    <button class="calc-key" data-value="4">4</button>
-                    <button class="calc-key" data-value="5">5</button>
-                    <button class="calc-key" data-value="6">6</button>
+
+                    <button class="calc-key" data-value="4">
+                        4
+                    </button>
+
+                    <button class="calc-key" data-value="5">
+                        5
+                    </button>
+
+                    <button class="calc-key" data-value="6">
+                        6
+                    </button>
 
                     <button
                         class="calc-key operation"
@@ -934,9 +1106,18 @@
                         −
                     </button>
 
-                    <button class="calc-key" data-value="1">1</button>
-                    <button class="calc-key" data-value="2">2</button>
-                    <button class="calc-key" data-value="3">3</button>
+
+                    <button class="calc-key" data-value="1">
+                        1
+                    </button>
+
+                    <button class="calc-key" data-value="2">
+                        2
+                    </button>
+
+                    <button class="calc-key" data-value="3">
+                        3
+                    </button>
 
                     <button
                         class="calc-key operation"
@@ -945,10 +1126,10 @@
                         +
                     </button>
 
+
                     <button
                         class="calc-key"
                         data-action="backspace"
-                        aria-label="Backspace"
                     >
                         ⌫
                     </button>
@@ -972,6 +1153,7 @@
 
             </div>
 
+
             <div class="card">
 
                 <div class="history-header">
@@ -988,6 +1170,7 @@
                         </span>
 
                     </div>
+
 
                     <div class="actions">
 
@@ -1009,6 +1192,7 @@
 
                 </div>
 
+
                 <div
                     id="calculatorHistoryList"
                     class="history-list"
@@ -1020,7 +1204,10 @@
 
     </section>
 
-    <!-- PERCENTAGE -->
+
+    <!-- =====================================================
+         PERCENTAGE
+         ===================================================== -->
 
     <section
         id="percentagePage"
@@ -1028,21 +1215,30 @@
     >
 
         <div class="page-heading">
+
             <h2>Percentage Calculator</h2>
-            <p>Calculate common percentages quickly.</p>
+
+            <p>
+                Calculate common percentages quickly.
+            </p>
+
         </div>
+
 
         <div class="grid-3">
 
-            <!-- Percentage of a number -->
+            <!-- Percentage of number -->
 
             <div class="card percentage-card">
 
-                <h3>Percentage of a number</h3>
+                <h3>
+                    Percentage of a number
+                </h3>
 
                 <p class="percentage-description">
                     What is X% of Y?
                 </p>
+
 
                 <div class="field">
 
@@ -1062,6 +1258,7 @@
 
                 </div>
 
+
                 <div class="field">
 
                     <label
@@ -1080,6 +1277,7 @@
 
                 </div>
 
+
                 <div class="actions">
 
                     <button
@@ -1091,12 +1289,14 @@
 
                 </div>
 
+
                 <div
                     id="percentOfResult"
                     class="percentage-result"
                 >
                     Percentage result
                 </div>
+
 
                 <div
                     id="discountFromPercentResult"
@@ -1107,15 +1307,19 @@
 
             </div>
 
+
             <!-- What percentage -->
 
             <div class="card percentage-card">
 
-                <h3>What percentage?</h3>
+                <h3>
+                    What percentage?
+                </h3>
 
                 <p class="percentage-description">
                     X is what percent of Y?
                 </p>
+
 
                 <div class="field">
 
@@ -1135,6 +1339,7 @@
 
                 </div>
 
+
                 <div class="field">
 
                     <label
@@ -1153,6 +1358,7 @@
 
                 </div>
 
+
                 <div class="actions">
 
                     <button
@@ -1164,6 +1370,7 @@
 
                 </div>
 
+
                 <div
                     id="whatPercentResult"
                     class="percentage-result"
@@ -1173,15 +1380,19 @@
 
             </div>
 
+
             <!-- Percentage change -->
 
             <div class="card percentage-card">
 
-                <h3>Percentage change</h3>
+                <h3>
+                    Percentage change
+                </h3>
 
                 <p class="percentage-description">
                     Calculate percentage increase or decrease.
                 </p>
+
 
                 <div class="field">
 
@@ -1201,6 +1412,7 @@
 
                 </div>
 
+
                 <div class="field">
 
                     <label
@@ -1219,6 +1431,7 @@
 
                 </div>
 
+
                 <div class="actions">
 
                     <button
@@ -1230,6 +1443,7 @@
 
                 </div>
 
+
                 <div
                     id="percentageChangeResult"
                     class="percentage-result"
@@ -1240,6 +1454,7 @@
             </div>
 
         </div>
+
 
         <div class="card percentage-history">
 
@@ -1257,6 +1472,7 @@
                     </span>
 
                 </div>
+
 
                 <div class="actions">
 
@@ -1278,6 +1494,7 @@
 
             </div>
 
+
             <div
                 id="percentageHistoryList"
                 class="history-list"
@@ -1287,7 +1504,10 @@
 
     </section>
 
-    <!-- TIMES -->
+
+    <!-- =====================================================
+         TIMES
+         ===================================================== -->
 
     <section
         id="timesPage"
@@ -1295,9 +1515,15 @@
     >
 
         <div class="page-heading">
+
             <h2>Times Table</h2>
-            <p>Practice and memorise everyday multiplication facts.</p>
+
+            <p>
+                Practice and memorise everyday multiplication facts.
+            </p>
+
         </div>
+
 
         <div class="card times-wrapper">
 
@@ -1340,6 +1566,7 @@
 
             </div>
 
+
             <div
                 id="timesTable"
                 class="times-table"
@@ -1349,7 +1576,10 @@
 
     </section>
 
-    <!-- BASE64 -->
+
+    <!-- =====================================================
+         BASE64
+         ===================================================== -->
 
     <section
         id="base64Page"
@@ -1357,17 +1587,27 @@
     >
 
         <div class="page-heading">
+
             <h2>Base64</h2>
-            <p>Encode and decode Base64 directly in your browser.</p>
+
+            <p>
+                Encode and decode Base64 directly in your browser.
+            </p>
+
         </div>
 
+
         <div class="grid-2">
+
+            <!-- Encoder -->
 
             <div class="card">
 
                 <div class="base64-card-header">
 
-                    <h3>Base64 Encoder</h3>
+                    <h3>
+                        Base64 Encoder
+                    </h3>
 
                     <span class="badge">
                         Encode
@@ -1375,10 +1615,12 @@
 
                 </div>
 
+
                 <textarea
                     id="encodeInput"
                     placeholder="Type or paste text here..."
                 ></textarea>
+
 
                 <div class="actions">
 
@@ -1398,9 +1640,11 @@
 
                 </div>
 
+
                 <div class="result-label">
                     Encoded result
                 </div>
+
 
                 <div
                     id="encodedOutput"
@@ -1408,6 +1652,7 @@
                 >
                     Your result will appear here.
                 </div>
+
 
                 <div class="actions">
 
@@ -1422,11 +1667,16 @@
 
             </div>
 
+
+            <!-- Decoder -->
+
             <div class="card">
 
                 <div class="base64-card-header">
 
-                    <h3>Base64 Decoder</h3>
+                    <h3>
+                        Base64 Decoder
+                    </h3>
 
                     <span class="badge">
                         Decode
@@ -1434,10 +1684,12 @@
 
                 </div>
 
+
                 <textarea
                     id="decodeInput"
                     placeholder="Paste Base64 here..."
                 ></textarea>
+
 
                 <div class="actions">
 
@@ -1457,9 +1709,11 @@
 
                 </div>
 
+
                 <div class="result-label">
                     Decoded result
                 </div>
+
 
                 <div
                     id="decodedOutput"
@@ -1467,6 +1721,7 @@
                 >
                     Your result will appear here.
                 </div>
+
 
                 <div class="actions">
 
@@ -1487,11 +1742,12 @@
 
 </div>
 
+
 <script>
 
-    /*
-     * Navigation
-     */
+    /* =====================================================
+       NAVIGATION
+       ===================================================== */
 
     const navButtons =
         document.querySelectorAll(".nav-btn");
@@ -1499,32 +1755,46 @@
     const pages =
         document.querySelectorAll(".page");
 
+
     navButtons.forEach(button => {
 
-        button.addEventListener("click", () => {
+        button.addEventListener(
+            "click",
+            () => {
 
-            navButtons.forEach(item =>
-                item.classList.remove("active")
-            );
+                navButtons.forEach(item =>
+                    item.classList.remove(
+                        "active"
+                    )
+                );
 
-            pages.forEach(page =>
-                page.classList.remove("active")
-            );
+                pages.forEach(page =>
+                    page.classList.remove(
+                        "active"
+                    )
+                );
 
-            button.classList.add("active");
+                button.classList.add(
+                    "active"
+                );
 
-            document
-                .getElementById(button.dataset.page)
-                .classList.add("active");
+                document
+                    .getElementById(
+                        button.dataset.page
+                    )
+                    .classList.add(
+                        "active"
+                    );
 
-        });
+            }
+        );
 
     });
 
 
-    /*
-     * Helpers
-     */
+    /* =====================================================
+       HELPERS
+       ===================================================== */
 
     function formatNumber(number) {
 
@@ -1545,11 +1815,11 @@
 
     function readNumber(id) {
 
-        const element =
-            document.getElementById(id);
-
         const raw =
-            element.value.trim();
+            document
+                .getElementById(id)
+                .value
+                .trim();
 
         if (raw === "") {
             return null;
@@ -1567,9 +1837,9 @@
     }
 
 
-    /*
-     * Calculator
-     */
+    /* =====================================================
+       CALCULATOR
+       ===================================================== */
 
     const CALCULATOR_HISTORY_KEY =
         "utilityCalculatorHistory";
@@ -1602,12 +1872,16 @@
     function calculateExpression(expression) {
 
         const clean =
-            expression.replace(/\s+/g, "");
+            expression.replace(
+                /\s+/g,
+                ""
+            );
 
         const tokens =
             clean.match(
                 /\d*\.?\d+|[()+\-*/]/g
             );
+
 
         if (
             !tokens ||
@@ -1618,12 +1892,15 @@
             );
         }
 
+
         let position = 0;
+
 
         function parseExpression() {
 
             let value =
                 parseTerm();
+
 
             while (
                 position < tokens.length &&
@@ -1639,6 +1916,7 @@
                 const next =
                     parseTerm();
 
+
                 if (operator === "+") {
                     value += next;
                 }
@@ -1647,6 +1925,7 @@
                 }
 
             }
+
 
             return value;
 
@@ -1657,6 +1936,7 @@
 
             let value =
                 parseFactor();
+
 
             while (
                 position < tokens.length &&
@@ -1672,14 +1952,18 @@
                 const next =
                     parseFactor();
 
+
                 if (
                     operator === "/" &&
                     next === 0
                 ) {
+
                     throw new Error(
                         "Cannot divide by zero"
                     );
+
                 }
+
 
                 if (operator === "*") {
                     value *= next;
@@ -1689,6 +1973,7 @@
                 }
 
             }
+
 
             return value;
 
@@ -1700,6 +1985,7 @@
             const token =
                 tokens[position];
 
+
             if (token === "-") {
 
                 position++;
@@ -1707,6 +1993,7 @@
                 return -parseFactor();
 
             }
+
 
             if (token === "+") {
 
@@ -1716,6 +2003,7 @@
 
             }
 
+
             if (token === "(") {
 
                 position++;
@@ -1723,19 +2011,24 @@
                 const value =
                     parseExpression();
 
+
                 if (
                     tokens[position] !== ")"
                 ) {
+
                     throw new Error(
                         "Missing )"
                     );
+
                 }
+
 
                 position++;
 
                 return value;
 
             }
+
 
             if (token === undefined) {
 
@@ -1745,8 +2038,10 @@
 
             }
 
+
             const number =
                 Number(token);
+
 
             if (!Number.isFinite(number)) {
 
@@ -1756,22 +2051,28 @@
 
             }
 
+
             position++;
 
             return number;
 
         }
 
+
         const result =
             parseExpression();
+
 
         if (
             position !== tokens.length
         ) {
+
             throw new Error(
                 "Invalid calculation"
             );
+
         }
+
 
         if (!Number.isFinite(result)) {
 
@@ -1781,86 +2082,19 @@
 
         }
 
+
         return result;
 
     }
 
 
-    document
-        .querySelectorAll(".calc-key")
-        .forEach(button => {
+    function prettyExpression(expression) {
 
-            button.addEventListener(
-                "click",
-                () => {
+        return expression
+            .replaceAll("*", " × ")
+            .replaceAll("/", " ÷ ");
 
-                    const value =
-                        button.dataset.value;
-
-                    const action =
-                        button.dataset.action;
-
-                    if (
-                        value !== undefined
-                    ) {
-
-                        if (
-                            calculatorInput.length >= 100
-                        ) {
-                            return;
-                        }
-
-                        calculatorInput += value;
-
-                        updateCalculatorDisplay();
-
-                        return;
-
-                    }
-
-                    if (
-                        action === "clear"
-                    ) {
-
-                        calculatorInput = "";
-
-                        calculatorExpression.textContent =
-                            "";
-
-                        updateCalculatorDisplay();
-
-                        return;
-
-                    }
-
-                    if (
-                        action === "backspace"
-                    ) {
-
-                        calculatorInput =
-                            calculatorInput.slice(
-                                0,
-                                -1
-                            );
-
-                        updateCalculatorDisplay();
-
-                        return;
-
-                    }
-
-                    if (
-                        action === "calculate"
-                    ) {
-
-                        runCalculator();
-
-                    }
-
-                }
-            );
-
-        });
+    }
 
 
     function runCalculator() {
@@ -1868,6 +2102,7 @@
         if (!calculatorInput) {
             return;
         }
+
 
         try {
 
@@ -1882,8 +2117,11 @@
             const formatted =
                 formatNumber(result);
 
+
             calculatorExpression.textContent =
-                prettyExpression(original);
+                prettyExpression(
+                    original
+                );
 
             calculatorDisplay.textContent =
                 formatted;
@@ -1892,10 +2130,12 @@
                 "error"
             );
 
+
             addCalculatorHistory(
                 original,
                 formatted
             );
+
 
             calculatorInput =
                 formatted;
@@ -1915,13 +2155,88 @@
     }
 
 
-    function prettyExpression(expression) {
+    document
+        .querySelectorAll(".calc-key")
+        .forEach(button => {
 
-        return expression
-            .replaceAll("*", " × ")
-            .replaceAll("/", " ÷ ");
+            button.addEventListener(
+                "click",
+                () => {
 
-    }
+                    const value =
+                        button.dataset.value;
+
+                    const action =
+                        button.dataset.action;
+
+
+                    if (
+                        value !== undefined
+                    ) {
+
+                        if (
+                            calculatorInput.length >=
+                            100
+                        ) {
+                            return;
+                        }
+
+                        calculatorInput += value;
+
+                        updateCalculatorDisplay();
+
+                        return;
+
+                    }
+
+
+                    if (
+                        action === "clear"
+                    ) {
+
+                        calculatorInput = "";
+
+                        calculatorExpression.textContent =
+                            "";
+
+                        updateCalculatorDisplay();
+
+                        return;
+
+                    }
+
+
+                    if (
+                        action ===
+                        "backspace"
+                    ) {
+
+                        calculatorInput =
+                            calculatorInput.slice(
+                                0,
+                                -1
+                            );
+
+                        updateCalculatorDisplay();
+
+                        return;
+
+                    }
+
+
+                    if (
+                        action ===
+                        "calculate"
+                    ) {
+
+                        runCalculator();
+
+                    }
+
+                }
+            );
+
+        });
 
 
     document.addEventListener(
@@ -1933,6 +2248,7 @@
                     "calculatorPage"
                 );
 
+
             if (
                 !page.classList.contains(
                     "active"
@@ -1941,8 +2257,11 @@
                 return;
             }
 
+
             const tag =
-                document.activeElement.tagName;
+                document.activeElement
+                    .tagName;
+
 
             if (
                 tag === "INPUT" ||
@@ -1951,6 +2270,7 @@
             ) {
                 return;
             }
+
 
             if (
                 /^[0-9+\-*/().]$/.test(
@@ -1967,6 +2287,7 @@
 
             }
 
+
             if (
                 event.key === "Enter"
             ) {
@@ -1978,6 +2299,7 @@
                 return;
 
             }
+
 
             if (
                 event.key === "Backspace"
@@ -1994,6 +2316,7 @@
                 return;
 
             }
+
 
             if (
                 event.key === "Escape"
@@ -2012,9 +2335,9 @@
     );
 
 
-    /*
-     * Calculator history
-     */
+    /* =====================================================
+       CALCULATOR HISTORY
+       ===================================================== */
 
     function getCalculatorHistory() {
 
@@ -2056,6 +2379,7 @@
         const history =
             getCalculatorHistory();
 
+
         history.unshift({
 
             id:
@@ -2065,6 +2389,7 @@
                     .slice(2),
 
             expression,
+
             result,
 
             date:
@@ -2073,18 +2398,18 @@
 
         });
 
+
         saveCalculatorHistory(
             history.slice(0, 100)
         );
+
 
         renderCalculatorHistory();
 
     }
 
 
-    function deleteCalculatorHistory(
-        id
-    ) {
+    function deleteCalculatorHistory(id) {
 
         const updated =
             getCalculatorHistory()
@@ -2093,7 +2418,11 @@
                         item.id !== id
                 );
 
-        saveCalculatorHistory(updated);
+
+        saveCalculatorHistory(
+            updated
+        );
+
 
         renderCalculatorHistory();
 
@@ -2115,15 +2444,19 @@
         const history =
             getCalculatorHistory();
 
+
         count.textContent =
             history.length;
 
         list.innerHTML = "";
 
+
         if (!history.length) {
 
             const empty =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
             empty.className =
                 "empty-state";
@@ -2131,28 +2464,39 @@
             empty.textContent =
                 "No calculations yet.";
 
-            list.appendChild(empty);
+            list.appendChild(
+                empty
+            );
 
             return;
 
         }
 
+
         history.forEach(item => {
 
             const row =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
             row.className =
                 "history-item";
 
+
             const content =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
             content.className =
                 "history-content";
 
+
             const expression =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
             expression.className =
                 "history-expression";
@@ -2162,8 +2506,11 @@
                     item.expression
                 );
 
+
             const result =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
             result.className =
                 "history-result";
@@ -2171,8 +2518,11 @@
             result.textContent =
                 `= ${item.result}`;
 
+
             const date =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
             date.className =
                 "history-date";
@@ -2180,11 +2530,13 @@
             date.textContent =
                 item.date;
 
+
             content.append(
                 expression,
                 result,
                 date
             );
+
 
             const deleteButton =
                 document.createElement(
@@ -2197,6 +2549,7 @@
             deleteButton.textContent =
                 "Delete";
 
+
             deleteButton.addEventListener(
                 "click",
                 () => {
@@ -2208,12 +2561,16 @@
                 }
             );
 
+
             row.append(
                 content,
                 deleteButton
             );
 
-            list.appendChild(row);
+
+            list.appendChild(
+                row
+            );
 
         });
 
@@ -2262,6 +2619,7 @@
                     return;
                 }
 
+
                 if (
                     !confirm(
                         "Delete all calculator history?"
@@ -2270,9 +2628,11 @@
                     return;
                 }
 
+
                 localStorage.removeItem(
                     CALCULATOR_HISTORY_KEY
                 );
+
 
                 renderCalculatorHistory();
 
@@ -2280,9 +2640,9 @@
         );
 
 
-    /*
-     * Percentage
-     */
+    /* =====================================================
+       PERCENTAGE
+       ===================================================== */
 
     const PERCENTAGE_HISTORY_KEY =
         "utilityPercentageHistory";
@@ -2328,6 +2688,7 @@
         const history =
             getPercentageHistory();
 
+
         history.unshift({
 
             id:
@@ -2337,6 +2698,7 @@
                     .slice(2),
 
             expression,
+
             result,
 
             date:
@@ -2345,19 +2707,18 @@
 
         });
 
+
         savePercentageHistory(
             history.slice(0, 100)
         );
+
 
         renderPercentageHistory();
 
     }
 
 
-    /*
-     * Percentage of number
-     * Plus after-discount result
-     */
+    /* Percentage of number + discount */
 
     document
         .getElementById(
@@ -2387,6 +2748,7 @@
                         "discountFromPercentResult"
                     );
 
+
                 if (
                     percentage === null ||
                     total === null
@@ -2410,6 +2772,7 @@
 
                 }
 
+
                 const percentageValue =
                     total *
                     percentage /
@@ -2418,6 +2781,7 @@
                 const afterDiscount =
                     total -
                     percentageValue;
+
 
                 const formattedPercentage =
                     formatNumber(
@@ -2429,11 +2793,14 @@
                         afterDiscount
                     );
 
+
                 output.textContent =
                     `${percentage}% of ${total} = ${formattedPercentage}`;
 
+
                 discountOutput.textContent =
                     `After ${percentage}% discount = ${formattedDiscount}`;
+
 
                 output.classList.remove(
                     "error"
@@ -2442,6 +2809,7 @@
                 discountOutput.classList.remove(
                     "error"
                 );
+
 
                 addPercentageHistory(
                     `${percentage}% of ${total}`,
@@ -2452,9 +2820,7 @@
         );
 
 
-    /*
-     * What percentage
-     */
+    /* X is what % of Y */
 
     document
         .getElementById(
@@ -2479,6 +2845,7 @@
                         "whatPercentResult"
                     );
 
+
                 if (
                     part === null ||
                     whole === null
@@ -2495,6 +2862,7 @@
 
                 }
 
+
                 if (
                     whole === 0
                 ) {
@@ -2510,23 +2878,28 @@
 
                 }
 
+
                 const percentage =
                     (
                         part /
                         whole
                     ) * 100;
 
+
                 const formatted =
                     formatNumber(
                         percentage
                     ) + "%";
 
+
                 output.textContent =
                     `${part} is ${formatted} of ${whole}`;
+
 
                 output.classList.remove(
                     "error"
                 );
+
 
                 addPercentageHistory(
                     `${part} is what percent of ${whole}`,
@@ -2537,9 +2910,7 @@
         );
 
 
-    /*
-     * Percentage change
-     */
+    /* Percentage change */
 
     document
         .getElementById(
@@ -2564,6 +2935,7 @@
                         "percentageChangeResult"
                     );
 
+
                 if (
                     oldValue === null ||
                     newValue === null
@@ -2580,6 +2952,7 @@
 
                 }
 
+
                 if (
                     oldValue === 0
                 ) {
@@ -2595,6 +2968,7 @@
 
                 }
 
+
                 const percentage =
                     (
                         (
@@ -2604,7 +2978,9 @@
                         Math.abs(oldValue)
                     ) * 100;
 
+
                 let result;
+
 
                 if (
                     percentage > 0
@@ -2637,12 +3013,15 @@
 
                 }
 
+
                 output.textContent =
                     result;
+
 
                 output.classList.remove(
                     "error"
                 );
+
 
                 addPercentageHistory(
                     `From ${oldValue} to ${newValue}`,
@@ -2653,9 +3032,7 @@
         );
 
 
-    /*
-     * Percentage history
-     */
+    /* Percentage history */
 
     function deletePercentageHistory(
         id
@@ -2668,9 +3045,11 @@
                         item.id !== id
                 );
 
+
         savePercentageHistory(
             updated
         );
+
 
         renderPercentageHistory();
 
@@ -2692,15 +3071,20 @@
         const history =
             getPercentageHistory();
 
+
         count.textContent =
             history.length;
 
+
         list.innerHTML = "";
+
 
         if (!history.length) {
 
             const empty =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
             empty.className =
                 "empty-state";
@@ -2708,11 +3092,15 @@
             empty.textContent =
                 "No calculations yet.";
 
-            list.appendChild(empty);
+
+            list.appendChild(
+                empty
+            );
 
             return;
 
         }
+
 
         history.forEach(item => {
 
@@ -2724,6 +3112,7 @@
             row.className =
                 "history-item";
 
+
             const content =
                 document.createElement(
                     "div"
@@ -2731,6 +3120,7 @@
 
             content.className =
                 "history-content";
+
 
             const expression =
                 document.createElement(
@@ -2743,6 +3133,7 @@
             expression.textContent =
                 item.expression;
 
+
             const result =
                 document.createElement(
                     "div"
@@ -2753,6 +3144,7 @@
 
             result.textContent =
                 item.result;
+
 
             const date =
                 document.createElement(
@@ -2765,11 +3157,13 @@
             date.textContent =
                 item.date;
 
+
             content.append(
                 expression,
                 result,
                 date
             );
+
 
             const deleteButton =
                 document.createElement(
@@ -2782,6 +3176,7 @@
             deleteButton.textContent =
                 "Delete";
 
+
             deleteButton.addEventListener(
                 "click",
                 () => {
@@ -2793,12 +3188,16 @@
                 }
             );
 
+
             row.append(
                 content,
                 deleteButton
             );
 
-            list.appendChild(row);
+
+            list.appendChild(
+                row
+            );
 
         });
 
@@ -2822,6 +3221,7 @@
                     list.classList.toggle(
                         "hidden"
                     );
+
 
                 this.textContent =
                     hidden
@@ -2847,6 +3247,7 @@
                     return;
                 }
 
+
                 if (
                     !confirm(
                         "Delete all percentage history?"
@@ -2855,9 +3256,11 @@
                     return;
                 }
 
+
                 localStorage.removeItem(
                     PERCENTAGE_HISTORY_KEY
                 );
+
 
                 renderPercentageHistory();
 
@@ -2865,9 +3268,9 @@
         );
 
 
-    /*
-     * Times table
-     */
+    /* =====================================================
+       TIMES TABLE
+       ===================================================== */
 
     const timesNumber =
         document.getElementById(
@@ -2880,6 +3283,68 @@
         );
 
 
+    function createTimesRow(
+        number,
+        multiplier
+    ) {
+
+        const row =
+            document.createElement(
+                "div"
+            );
+
+        row.className =
+            "times-row";
+
+
+        const left =
+            document.createElement(
+                "div"
+            );
+
+        left.className =
+            "times-left";
+
+        left.textContent =
+            `${number} × ${multiplier}`;
+
+
+        const equals =
+            document.createElement(
+                "div"
+            );
+
+        equals.className =
+            "times-equals";
+
+        equals.textContent =
+            "=";
+
+
+        const answer =
+            document.createElement(
+                "div"
+            );
+
+        answer.className =
+            "times-answer";
+
+        answer.textContent =
+            number * multiplier;
+
+
+        row.append(
+            left,
+            equals,
+            answer
+        );
+
+
+        return row;
+
+    }
+
+
     function renderTimesTable() {
 
         const number =
@@ -2887,66 +3352,76 @@
                 timesNumber.value
             );
 
+
         timesTable.innerHTML = "";
+
+
+        /*
+         * Desktop:
+         *
+         * 6 × 1 = 6      6 × 6  = 36
+         * 6 × 2 = 12     6 × 7  = 42
+         * 6 × 3 = 18     6 × 8  = 48
+         * 6 × 4 = 24     6 × 9  = 54
+         * 6 × 5 = 30     6 × 10 = 60
+         *
+         * Phone becomes a single column via CSS.
+         */
+
+        const leftColumn =
+            document.createElement(
+                "div"
+            );
+
+        leftColumn.className =
+            "times-column";
+
+
+        const rightColumn =
+            document.createElement(
+                "div"
+            );
+
+        rightColumn.className =
+            "times-column";
+
 
         for (
             let multiplier = 1;
+            multiplier <= 5;
+            multiplier++
+        ) {
+
+            leftColumn.appendChild(
+                createTimesRow(
+                    number,
+                    multiplier
+                )
+            );
+
+        }
+
+
+        for (
+            let multiplier = 6;
             multiplier <= 10;
             multiplier++
         ) {
 
-            const row =
-                document.createElement(
-                    "div"
-                );
-
-            row.className =
-                "times-row";
-
-            const left =
-                document.createElement(
-                    "div"
-                );
-
-            left.className =
-                "times-left";
-
-            left.textContent =
-                `${number} × ${multiplier}`;
-
-            const equals =
-                document.createElement(
-                    "div"
-                );
-
-            equals.className =
-                "times-equals";
-
-            equals.textContent =
-                "=";
-
-            const answer =
-                document.createElement(
-                    "div"
-                );
-
-            answer.className =
-                "times-answer";
-
-            answer.textContent =
-                number * multiplier;
-
-            row.append(
-                left,
-                equals,
-                answer
-            );
-
-            timesTable.appendChild(
-                row
+            rightColumn.appendChild(
+                createTimesRow(
+                    number,
+                    multiplier
+                )
             );
 
         }
+
+
+        timesTable.append(
+            leftColumn,
+            rightColumn
+        );
 
     }
 
@@ -2957,9 +3432,9 @@
     );
 
 
-    /*
-     * Base64
-     */
+    /* =====================================================
+       BASE64
+       ===================================================== */
 
     function encodeBase64(text) {
 
@@ -2967,7 +3442,9 @@
             new TextEncoder()
                 .encode(text);
 
+
         let binary = "";
+
 
         for (
             const byte of bytes
@@ -2980,6 +3457,7 @@
 
         }
 
+
         return btoa(binary);
 
     }
@@ -2988,17 +3466,25 @@
     function decodeBase64(base64) {
 
         const cleanBase64 =
-            base64.replace(/\s+/g, "");
+            base64.replace(
+                /\s+/g,
+                ""
+            );
+
 
         const binary =
             atob(cleanBase64);
+
 
         const bytes =
             Uint8Array.from(
                 binary,
                 character =>
-                    character.charCodeAt(0)
+                    character.charCodeAt(
+                        0
+                    )
             );
+
 
         return new TextDecoder(
             "utf-8",
@@ -3028,6 +3514,7 @@
                         "encodedOutput"
                     );
 
+
                 if (!input) {
 
                     output.textContent =
@@ -3041,8 +3528,12 @@
 
                 }
 
+
                 output.textContent =
-                    encodeBase64(input);
+                    encodeBase64(
+                        input
+                    );
+
 
                 output.classList.remove(
                     "error"
@@ -3061,16 +3552,18 @@
             () => {
 
                 const input =
-                    document.getElementById(
-                        "decodeInput"
-                    )
-                    .value
-                    .trim();
+                    document
+                        .getElementById(
+                            "decodeInput"
+                        )
+                        .value
+                        .trim();
 
                 const output =
                     document.getElementById(
                         "decodedOutput"
                     );
+
 
                 if (!input) {
 
@@ -3085,10 +3578,14 @@
 
                 }
 
+
                 try {
 
                     output.textContent =
-                        decodeBase64(input);
+                        decodeBase64(
+                            input
+                        );
+
 
                     output.classList.remove(
                         "error"
@@ -3099,6 +3596,7 @@
 
                     output.textContent =
                         "Invalid Base64 value.";
+
 
                     output.classList.add(
                         "error"
@@ -3124,13 +3622,16 @@
                     )
                     .value = "";
 
+
                 const output =
                     document.getElementById(
                         "encodedOutput"
                     );
 
+
                 output.textContent =
                     "Your result will appear here.";
+
 
                 output.classList.remove(
                     "error"
@@ -3154,13 +3655,16 @@
                     )
                     .value = "";
 
+
                 const output =
                     document.getElementById(
                         "decodedOutput"
                     );
 
+
                 output.textContent =
                     "Your result will appear here.";
+
 
                 output.classList.remove(
                     "error"
@@ -3170,9 +3674,9 @@
         );
 
 
-    /*
-     * Copy
-     */
+    /* =====================================================
+       COPY
+       ===================================================== */
 
     async function copyText(
         elementId,
@@ -3184,6 +3688,7 @@
                 elementId
             );
 
+
         if (
             element.classList.contains(
                 "error"
@@ -3192,8 +3697,10 @@
             return;
         }
 
+
         const text =
             element.textContent.trim();
+
 
         if (
             !text ||
@@ -3203,16 +3710,20 @@
             return;
         }
 
+
         try {
 
             await navigator.clipboard
                 .writeText(text);
 
+
             const original =
                 button.textContent;
 
+
             button.textContent =
                 "Copied";
+
 
             setTimeout(
                 () => {
@@ -3270,12 +3781,14 @@
         );
 
 
-    /*
-     * Initialise
-     */
+    /* =====================================================
+       INITIALISE
+       ===================================================== */
 
     renderCalculatorHistory();
+
     renderPercentageHistory();
+
     renderTimesTable();
 
 </script>
