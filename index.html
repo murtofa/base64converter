@@ -2,18 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1, viewport-fit=cover"
     >
-
     <title>Utility Tools</title>
-
     <style>
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
         :root {
             --bg: #f5f7fb;
@@ -21,32 +16,23 @@
             --text: #172033;
             --muted: #6b7280;
             --border: #e5e7eb;
-
             --primary: #2563eb;
             --primary-hover: #1d4ed8;
             --primary-soft: #eff6ff;
-
             --green: #059669;
             --green-soft: #ecfdf5;
-
             --red: #dc2626;
             --red-soft: #fff1f2;
-
             --input: #f8fafc;
-
             --radius: 18px;
         }
 
-        html {
-            -webkit-text-size-adjust: 100%;
-        }
+        html { -webkit-text-size-adjust: 100%; }
 
         body {
             margin: 0;
-
             background: var(--bg);
             color: var(--text);
-
             font-family:
                 Inter,
                 ui-sans-serif,
@@ -60,9 +46,7 @@
         button,
         input,
         textarea,
-        select {
-            font: inherit;
-        }
+        select { font: inherit; }
 
         button {
             -webkit-tap-highlight-color: transparent;
@@ -72,76 +56,48 @@
         .app {
             width: min(1100px, calc(100% - 28px));
             margin: 0 auto;
-
             padding:
                 max(22px, env(safe-area-inset-top))
                 0
                 max(30px, env(safe-area-inset-bottom));
         }
 
-
-        /* =====================================================
-           HEADER
-           ===================================================== */
-
-        .app-header {
-            margin-bottom: 18px;
-        }
+        .app-header { margin-bottom: 18px; }
 
         .app-header h1 {
             margin: 0;
-
             font-size: clamp(27px, 5vw, 38px);
             letter-spacing: -1px;
         }
 
         .app-header p {
             margin: 7px 0 0;
-
             color: var(--muted);
-
             font-size: 14px;
         }
-
-
-        /* =====================================================
-           MAIN NAVIGATION
-           ===================================================== */
 
         .main-nav {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-
             gap: 5px;
-
             width: 100%;
-
             padding: 5px;
             margin-bottom: 20px;
-
             background: #e9eef6;
-
             border-radius: 15px;
         }
 
         .nav-btn {
             min-width: 0;
             min-height: 45px;
-
             padding: 9px 4px;
-
             border: 0;
             border-radius: 11px;
-
             background: transparent;
-
             color: #64748b;
-
             font-size: 14px;
             font-weight: 650;
-
             cursor: pointer;
-
             transition:
                 background .18s ease,
                 color .18s ease,
@@ -151,96 +107,57 @@
         .nav-btn.active {
             background: #ffffff;
             color: var(--primary);
-
-            box-shadow:
-                0 1px 4px rgba(15, 23, 42, .10);
+            box-shadow: 0 1px 4px rgba(15, 23, 42, .10);
         }
 
+        .page { display: none; }
+        .page.active { display: block; }
 
-        /* =====================================================
-           PAGES
-           ===================================================== */
-
-        .page {
-            display: none;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-
-        /* =====================================================
-           COMMON
-           ===================================================== */
-
-        .page-heading {
-            margin-bottom: 17px;
-        }
+        .page-heading { margin-bottom: 17px; }
 
         .page-heading h2 {
             margin: 0 0 5px;
-
             font-size: 23px;
             letter-spacing: -.4px;
         }
 
         .page-heading p {
             margin: 0;
-
             color: var(--muted);
-
             font-size: 14px;
             line-height: 1.5;
         }
 
         .card {
             min-width: 0;
-
             padding: 20px;
-
             background: var(--card);
-
             border: 1px solid var(--border);
             border-radius: var(--radius);
-
-            box-shadow:
-                0 2px 8px rgba(15, 23, 42, .035);
+            box-shadow: 0 2px 8px rgba(15, 23, 42, .035);
         }
 
-        .card h3 {
-            margin-top: 0;
-        }
+        .card h3 { margin-top: 0; }
 
         .grid-2 {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
-
             gap: 18px;
         }
 
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
-
             gap: 18px;
         }
 
-        .field {
-            margin-bottom: 12px;
-        }
-
-        .field:last-child {
-            margin-bottom: 0;
-        }
+        .field { margin-bottom: 12px; }
+        .field:last-child { margin-bottom: 0; }
 
         .field-label {
             display: block;
-
             margin-bottom: 6px;
-
             color: var(--muted);
-
             font-size: 12px;
             font-weight: 650;
         }
@@ -249,17 +166,12 @@
         textarea,
         select {
             width: 100%;
-
             border: 1px solid var(--border);
             border-radius: 12px;
-
             background: #ffffff;
             color: var(--text);
-
             outline: none;
-
             font-size: 16px;
-
             transition:
                 border-color .18s ease,
                 box-shadow .18s ease;
@@ -268,19 +180,14 @@
         input,
         select {
             min-height: 48px;
-
             padding: 10px 13px;
         }
 
         textarea {
             min-height: 145px;
-
             padding: 13px;
-
             resize: vertical;
-
             line-height: 1.45;
-
             font-family:
                 "SFMono-Regular",
                 Consolas,
@@ -292,30 +199,22 @@
         textarea:focus,
         select:focus {
             border-color: #93b4ff;
-
-            box-shadow:
-                0 0 0 3px rgba(37, 99, 235, .10);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, .10);
         }
 
         .actions {
             display: flex;
             flex-wrap: wrap;
-
             gap: 8px;
-
             margin-top: 12px;
         }
 
         .btn {
             min-height: 43px;
-
             padding: 9px 14px;
-
             border: 0;
             border-radius: 11px;
-
             cursor: pointer;
-
             font-size: 14px;
             font-weight: 650;
         }
@@ -325,9 +224,7 @@
             color: #ffffff;
         }
 
-        .btn-primary:hover {
-            background: var(--primary-hover);
-        }
+        .btn-primary:hover { background: var(--primary-hover); }
 
         .btn-green {
             background: var(--green);
@@ -344,100 +241,68 @@
             color: var(--red);
         }
 
-        .error {
-            color: var(--red) !important;
-        }
-
-
-        /* =====================================================
-           CALCULATOR
-           ===================================================== */
+        .error { color: var(--red) !important; }
 
         .calculator-layout {
             display: grid;
             grid-template-columns: minmax(310px, 440px) 1fr;
-
             gap: 18px;
-
             align-items: start;
         }
 
-        .calculator-card {
-            padding: 16px;
-        }
+        .calculator-card { padding: 16px; }
 
         .calculator-display {
             min-height: 112px;
-
             margin-bottom: 13px;
             padding: 17px;
-
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-
             background: #111827;
-
             border-radius: 16px;
-
             text-align: right;
-
             overflow: hidden;
         }
 
         .calculator-expression {
             min-height: 20px;
-
             margin-bottom: 5px;
-
             color: #9ca3af;
-
             font-size: 13px;
-
             word-break: break-word;
         }
 
         .calculator-value {
             color: #ffffff;
-
             font-size: clamp(29px, 7vw, 40px);
             font-weight: 700;
             line-height: 1.1;
-
             word-break: break-word;
         }
 
         .calculator-buttons {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-
             gap: 8px;
         }
 
         .calc-key {
             min-width: 0;
             min-height: 58px;
-
             border: 0;
             border-radius: 14px;
-
             background: #f1f5f9;
-
             color: var(--text);
-
             cursor: pointer;
-
             font-size: 20px;
             font-weight: 650;
-
             transition:
                 transform .08s ease,
                 background .15s ease;
         }
 
-        .calc-key:active {
-            transform: scale(.96);
-        }
+        .calc-key:active { transform: scale(.96); }
 
         .calc-key.operation {
             background: #eaf1ff;
@@ -454,130 +319,81 @@
             color: #ffffff;
         }
 
-
-        /* =====================================================
-           HISTORY
-           ===================================================== */
-
         .history-header {
             display: flex;
-
             justify-content: space-between;
             align-items: center;
-
             gap: 10px;
-
             flex-wrap: wrap;
         }
 
         .history-title {
             display: flex;
-
             align-items: center;
-
             gap: 8px;
         }
 
-        .history-title h3 {
-            margin: 0;
-        }
+        .history-title h3 { margin: 0; }
 
         .history-count {
             padding: 3px 8px;
-
             border-radius: 999px;
-
             background: #eef2f7;
-
             color: var(--muted);
-
             font-size: 12px;
         }
 
-        .history-list {
-            margin-top: 12px;
-        }
-
-        .history-list.hidden {
-            display: none;
-        }
+        .history-list { margin-top: 12px; }
+        .history-list.hidden { display: none; }
 
         .history-item {
             display: flex;
-
             justify-content: space-between;
             align-items: flex-start;
-
             gap: 12px;
-
             padding: 12px 0;
-
             border-bottom: 1px solid var(--border);
         }
 
-        .history-item:last-child {
-            border-bottom: 0;
-        }
-
-        .history-content {
-            min-width: 0;
-        }
+        .history-item:last-child { border-bottom: 0; }
+        .history-content { min-width: 0; }
 
         .history-expression {
             color: var(--muted);
-
             font-size: 13px;
-
             overflow-wrap: anywhere;
         }
 
         .history-result {
             margin-top: 3px;
-
             font-size: 17px;
             font-weight: 700;
-
             overflow-wrap: anywhere;
         }
 
         .history-date {
             margin-top: 4px;
-
             color: #9ca3af;
-
             font-size: 11px;
         }
 
         .delete-history {
             flex-shrink: 0;
-
             padding: 7px;
-
             border: 0;
-
             background: transparent;
             color: var(--red);
-
             cursor: pointer;
-
             font-size: 13px;
             font-weight: 650;
         }
 
         .empty-state {
             padding: 25px 10px;
-
             color: var(--muted);
-
             text-align: center;
-
             font-size: 14px;
         }
-
-
-        /* =====================================================
-           PERCENTAGE
-           ===================================================== */
 
         .percentage-card {
             display: flex;
@@ -586,356 +402,205 @@
 
         .percentage-card h3 {
             margin-bottom: 5px;
-
             font-size: 17px;
         }
 
         .percentage-description {
             min-height: 42px;
-
             margin: 0 0 15px;
-
             color: var(--muted);
-
             font-size: 13px;
             line-height: 1.45;
         }
 
         .percentage-result {
             min-height: 54px;
-
             margin-top: 14px;
             padding: 13px;
-
             display: flex;
             align-items: center;
-
             border-radius: 12px;
-
             background: var(--primary-soft);
-
             color: #1e40af;
-
             font-size: 17px;
             font-weight: 700;
-
             overflow-wrap: anywhere;
         }
 
         .discount-result {
             margin-top: 8px;
-
             background: var(--green-soft);
-
             color: #047857;
         }
 
-        .percentage-history {
-            margin-top: 18px;
-        }
+        .percentage-history { margin-top: 18px; }
 
-
-        /* =====================================================
-           TIMES TABLE
-           ===================================================== */
-
-        .times-wrapper {
-            max-width: 760px;
-        }
+        .times-wrapper { max-width: 760px; }
 
         .times-selector {
             display: flex;
-
             align-items: end;
-
             gap: 12px;
-
             margin-bottom: 20px;
         }
 
         .times-selector .field {
             width: 220px;
-
             margin: 0;
         }
 
-        /*
-         * WEB:
-         * left column = 1 to 5
-         * right column = 6 to 10
-         */
-
         .times-table {
             display: grid;
-
             grid-template-columns: repeat(2, minmax(0, 1fr));
-
             gap: 14px;
         }
 
         .times-column {
             display: flex;
             flex-direction: column;
-
             gap: 9px;
         }
 
         .times-row {
             display: grid;
-
             grid-template-columns:
                 minmax(0, 1fr)
                 24px
                 minmax(0, 1fr);
-
             align-items: center;
-
             min-height: 56px;
-
             padding: 11px 16px;
-
             border: 1px solid var(--border);
             border-radius: 13px;
-
             background: var(--input);
-
             font-size: 17px;
             font-weight: 600;
         }
 
-        .times-left {
-            text-align: right;
-        }
+        .times-left { text-align: right; }
 
         .times-equals {
             color: var(--muted);
-
             text-align: center;
         }
 
         .times-answer {
             color: var(--primary);
-
             text-align: left;
-
             font-size: 18px;
             font-weight: 750;
         }
 
-
-        /* =====================================================
-           BASE64
-           ===================================================== */
-
         .base64-card-header {
             display: flex;
-
             justify-content: space-between;
             align-items: center;
-
             gap: 10px;
-
             margin-bottom: 14px;
         }
 
-        .base64-card-header h3 {
-            margin: 0;
-        }
+        .base64-card-header h3 { margin: 0; }
 
         .badge {
             padding: 4px 9px;
-
             border-radius: 999px;
-
             background: var(--primary-soft);
-
             color: var(--primary);
-
             font-size: 11px;
             font-weight: 700;
         }
 
         .result-label {
             margin: 16px 0 6px;
-
             color: var(--muted);
-
             font-size: 12px;
             font-weight: 650;
         }
 
         .result-box {
             min-height: 68px;
-
             padding: 13px;
-
             border: 1px solid var(--border);
             border-radius: 12px;
-
             background: var(--input);
-
             font-family:
                 "SFMono-Regular",
                 Consolas,
                 monospace;
-
             font-size: 14px;
-
             white-space: pre-wrap;
             word-break: break-word;
-
             user-select: text;
-
             cursor: text;
         }
 
-
-        /* =====================================================
-           TABLET
-           ===================================================== */
-
         @media (max-width: 900px) {
-
-            .grid-3 {
-                grid-template-columns: 1fr;
-            }
-
-            .calculator-layout {
-                grid-template-columns: 1fr;
-            }
-
+            .grid-3 { grid-template-columns: 1fr; }
+            .calculator-layout { grid-template-columns: 1fr; }
         }
 
-
-        /* =====================================================
-           PHONE
-           Keep original single-column Times layout.
-           ===================================================== */
-
         @media (max-width: 720px) {
-
-            body {
-                background: #f5f7fb;
-            }
+            body { background: #f5f7fb; }
 
             .app {
                 width: 100%;
-
                 padding:
                     max(16px, env(safe-area-inset-top))
                     12px
                     max(24px, env(safe-area-inset-bottom));
             }
 
-            .app-header {
-                padding: 0 4px;
-            }
+            .app-header { padding: 0 4px; }
+            .app-header h1 { font-size: 26px; }
 
-            .app-header h1 {
-                font-size: 26px;
-            }
-
-            .grid-2 {
-                grid-template-columns: 1fr;
-            }
+            .grid-2 { grid-template-columns: 1fr; }
 
             .card {
                 padding: 16px;
-
                 border-radius: 17px;
             }
 
             .main-nav {
                 position: sticky;
-
                 top: 8px;
-
                 z-index: 100;
-
                 margin-bottom: 18px;
-
-                box-shadow:
-                    0 5px 18px rgba(15, 23, 42, .08);
+                box-shadow: 0 5px 18px rgba(15, 23, 42, .08);
             }
 
             .nav-btn {
                 min-height: 44px;
-
                 padding-left: 2px;
                 padding-right: 2px;
-
                 font-size: 13px;
             }
 
-            .calculator-card {
-                padding: 12px;
-            }
+            .calculator-card { padding: 12px; }
+            .calc-key { min-height: 58px; }
 
-            .calc-key {
-                min-height: 58px;
-            }
+            .times-table { display: block; }
+            .times-column { display: contents; }
 
-            /*
-             * PHONE:
-             * Back to one column:
-             * 1,2,3,4,5,6,7,8,9,10
-             */
+            .times-row { margin-bottom: 9px; }
+            .times-row:last-child { margin-bottom: 0; }
 
-            .times-table {
-                display: block;
-            }
-
-            .times-column {
-                display: contents;
-            }
-
-            .times-row {
-                margin-bottom: 9px;
-            }
-
-            .times-row:last-child {
-                margin-bottom: 0;
-            }
-
-            .times-selector {
-                display: block;
-            }
-
-            .times-selector .field {
-                width: 100%;
-            }
-
+            .times-selector { display: block; }
+            .times-selector .field { width: 100%; }
         }
 
-
         @media (max-width: 390px) {
-
-            .nav-btn {
-                font-size: 12.5px;
-            }
-
-            .calculator-buttons {
-                gap: 6px;
-            }
+            .nav-btn { font-size: 12.5px; }
+            .calculator-buttons { gap: 6px; }
 
             .calc-key {
                 min-height: 54px;
-
                 border-radius: 12px;
-
                 font-size: 18px;
             }
 
-            .history-header .actions {
-                width: 100%;
-            }
-
-            .history-header .actions .btn {
-                flex: 1;
-            }
-
+            .history-header .actions { width: 100%; }
+            .history-header .actions .btn { flex: 1; }
         }
-
     </style>
 </head>
 
@@ -943,360 +608,113 @@
 
 <div class="app">
 
-    <!-- =====================================================
-         HEADER
-         ===================================================== -->
-
     <header class="app-header">
-
         <h1>Utility Tools</h1>
-
-        <p>
-            Simple everyday tools that run directly in your browser.
-        </p>
-
+        <p>Simple everyday tools that run directly in your browser.</p>
     </header>
 
-
-    <!-- =====================================================
-         NAVIGATION
-         ===================================================== -->
-
     <nav class="main-nav">
-
-        <button
-            class="nav-btn active"
-            data-page="calculatorPage"
-        >
-            Calc
-        </button>
-
-        <button
-            class="nav-btn"
-            data-page="percentagePage"
-        >
-            %
-        </button>
-
-        <button
-            class="nav-btn"
-            data-page="timesPage"
-        >
-            Times
-        </button>
-
-        <button
-            class="nav-btn"
-            data-page="base64Page"
-        >
-            Base64
-        </button>
-
+        <button class="nav-btn active" data-page="calculatorPage">Calc</button>
+        <button class="nav-btn" data-page="percentagePage">%</button>
+        <button class="nav-btn" data-page="timesPage">Times</button>
+        <button class="nav-btn" data-page="base64Page">Base64</button>
     </nav>
 
-
-    <!-- =====================================================
-         CALCULATOR
-         ===================================================== -->
-
-    <section
-        id="calculatorPage"
-        class="page active"
-    >
+    <section id="calculatorPage" class="page active">
 
         <div class="page-heading">
-
             <h2>Calculator</h2>
-
-            <p>
-                Quick calculations with parentheses and saved history.
-            </p>
-
+            <p>Quick calculations with parentheses and saved history.</p>
         </div>
-
 
         <div class="calculator-layout">
 
             <div class="card calculator-card">
 
                 <div class="calculator-display">
-
-                    <div
-                        id="calculatorExpression"
-                        class="calculator-expression"
-                    ></div>
-
-                    <div
-                        id="calculatorDisplay"
-                        class="calculator-value"
-                    >
-                        0
-                    </div>
-
+                    <div id="calculatorExpression" class="calculator-expression"></div>
+                    <div id="calculatorDisplay" class="calculator-value">0</div>
                 </div>
 
-
                 <div class="calculator-buttons">
+                    <button class="calc-key clear" data-action="clear">CS</button>
+                    <button class="calc-key operation" data-value="(">(</button>
+                    <button class="calc-key operation" data-value=")">)</button>
+                    <button class="calc-key operation" data-value="/">÷</button>
 
-                    <button
-                        class="calc-key clear"
-                        data-action="clear"
-                    >
-                        CS
-                    </button>
+                    <button class="calc-key" data-value="7">7</button>
+                    <button class="calc-key" data-value="8">8</button>
+                    <button class="calc-key" data-value="9">9</button>
+                    <button class="calc-key operation" data-value="*">×</button>
 
-                    <button
-                        class="calc-key operation"
-                        data-value="("
-                    >
-                        (
-                    </button>
+                    <button class="calc-key" data-value="4">4</button>
+                    <button class="calc-key" data-value="5">5</button>
+                    <button class="calc-key" data-value="6">6</button>
+                    <button class="calc-key operation" data-value="-">−</button>
 
-                    <button
-                        class="calc-key operation"
-                        data-value=")"
-                    >
-                        )
-                    </button>
+                    <button class="calc-key" data-value="1">1</button>
+                    <button class="calc-key" data-value="2">2</button>
+                    <button class="calc-key" data-value="3">3</button>
+                    <button class="calc-key operation" data-value="+">+</button>
 
-                    <button
-                        class="calc-key operation"
-                        data-value="/"
-                    >
-                        ÷
-                    </button>
-
-
-                    <button class="calc-key" data-value="7">
-                        7
-                    </button>
-
-                    <button class="calc-key" data-value="8">
-                        8
-                    </button>
-
-                    <button class="calc-key" data-value="9">
-                        9
-                    </button>
-
-                    <button
-                        class="calc-key operation"
-                        data-value="*"
-                    >
-                        ×
-                    </button>
-
-
-                    <button class="calc-key" data-value="4">
-                        4
-                    </button>
-
-                    <button class="calc-key" data-value="5">
-                        5
-                    </button>
-
-                    <button class="calc-key" data-value="6">
-                        6
-                    </button>
-
-                    <button
-                        class="calc-key operation"
-                        data-value="-"
-                    >
-                        −
-                    </button>
-
-
-                    <button class="calc-key" data-value="1">
-                        1
-                    </button>
-
-                    <button class="calc-key" data-value="2">
-                        2
-                    </button>
-
-                    <button class="calc-key" data-value="3">
-                        3
-                    </button>
-
-                    <button
-                        class="calc-key operation"
-                        data-value="+"
-                    >
-                        +
-                    </button>
-
-
-                    <button
-                        class="calc-key"
-                        data-action="backspace"
-                    >
-                        ⌫
-                    </button>
-
-                    <button class="calc-key" data-value="0">
-                        0
-                    </button>
-
-                    <button class="calc-key" data-value=".">
-                        .
-                    </button>
-
-                    <button
-                        class="calc-key equals"
-                        data-action="calculate"
-                    >
-                        =
-                    </button>
-
+                    <button class="calc-key" data-action="backspace">⌫</button>
+                    <button class="calc-key" data-value="0">0</button>
+                    <button class="calc-key" data-value=".">.</button>
+                    <button class="calc-key equals" data-action="calculate">=</button>
                 </div>
 
             </div>
 
-
             <div class="card">
-
                 <div class="history-header">
-
                     <div class="history-title">
-
                         <h3>History</h3>
-
-                        <span
-                            id="calculatorHistoryCount"
-                            class="history-count"
-                        >
-                            0
-                        </span>
-
+                        <span id="calculatorHistoryCount" class="history-count">0</span>
                     </div>
-
 
                     <div class="actions">
-
-                        <button
-                            id="toggleCalculatorHistory"
-                            class="btn btn-light"
-                        >
-                            Hide
-                        </button>
-
-                        <button
-                            id="clearCalculatorHistory"
-                            class="btn btn-danger"
-                        >
-                            Clear All
-                        </button>
-
+                        <button id="toggleCalculatorHistory" class="btn btn-light">Hide</button>
+                        <button id="clearCalculatorHistory" class="btn btn-danger">Clear All</button>
                     </div>
-
                 </div>
 
-
-                <div
-                    id="calculatorHistoryList"
-                    class="history-list"
-                ></div>
-
+                <div id="calculatorHistoryList" class="history-list"></div>
             </div>
 
         </div>
 
     </section>
 
-
-    <!-- =====================================================
-         PERCENTAGE
-         ===================================================== -->
-
-    <section
-        id="percentagePage"
-        class="page"
-    >
+    <section id="percentagePage" class="page">
 
         <div class="page-heading">
-
             <h2>Percentage Calculator</h2>
-
-            <p>
-                Calculate common percentages quickly.
-            </p>
-
+            <p>Calculate common percentages quickly.</p>
         </div>
-
 
         <div class="grid-3">
 
-            <!-- Percentage of number -->
-
             <div class="card percentage-card">
-
-                <h3>
-                    Percentage of a number
-                </h3>
-
-                <p class="percentage-description">
-                    What is X% of Y?
-                </p>
-
+                <h3>Percentage of a number</h3>
+                <p class="percentage-description">What is X% of Y?</p>
 
                 <div class="field">
-
-                    <label
-                        class="field-label"
-                        for="percentValue"
-                    >
-                        Percentage
-                    </label>
-
-                    <input
-                        id="percentValue"
-                        type="number"
-                        step="any"
-                        placeholder="e.g. 20"
-                    >
-
+                    <label class="field-label" for="percentValue">Percentage</label>
+                    <input id="percentValue" type="number" step="any" placeholder="e.g. 20">
                 </div>
-
 
                 <div class="field">
-
-                    <label
-                        class="field-label"
-                        for="percentTotal"
-                    >
-                        Number
-                    </label>
-
-                    <input
-                        id="percentTotal"
-                        type="number"
-                        step="any"
-                        placeholder="e.g. 250"
-                    >
-
+                    <label class="field-label" for="percentTotal">Number</label>
+                    <input id="percentTotal" type="number" step="any" placeholder="e.g. 250">
                 </div>
-
 
                 <div class="actions">
-
-                    <button
-                        id="percentOfButton"
-                        class="btn btn-primary"
-                    >
-                        Calculate
-                    </button>
-
+                    <button id="percentOfButton" class="btn btn-primary">Calculate</button>
                 </div>
 
-
-                <div
-                    id="percentOfResult"
-                    class="percentage-result"
-                >
+                <div id="percentOfResult" class="percentage-result">
                     Percentage result
                 </div>
-
 
                 <div
                     id="discountFromPercentResult"
@@ -1304,242 +722,95 @@
                 >
                     After discount
                 </div>
-
             </div>
 
-
-            <!-- What percentage -->
-
             <div class="card percentage-card">
-
-                <h3>
-                    What percentage?
-                </h3>
-
-                <p class="percentage-description">
-                    X is what percent of Y?
-                </p>
-
+                <h3>What percentage?</h3>
+                <p class="percentage-description">X is what percent of Y?</p>
 
                 <div class="field">
-
-                    <label
-                        class="field-label"
-                        for="partValue"
-                    >
-                        Value
-                    </label>
-
-                    <input
-                        id="partValue"
-                        type="number"
-                        step="any"
-                        placeholder="e.g. 25"
-                    >
-
+                    <label class="field-label" for="partValue">Value</label>
+                    <input id="partValue" type="number" step="any" placeholder="e.g. 25">
                 </div>
-
 
                 <div class="field">
-
-                    <label
-                        class="field-label"
-                        for="wholeValue"
-                    >
-                        Total
-                    </label>
-
-                    <input
-                        id="wholeValue"
-                        type="number"
-                        step="any"
-                        placeholder="e.g. 100"
-                    >
-
+                    <label class="field-label" for="wholeValue">Total</label>
+                    <input id="wholeValue" type="number" step="any" placeholder="e.g. 100">
                 </div>
-
 
                 <div class="actions">
-
-                    <button
-                        id="whatPercentButton"
-                        class="btn btn-primary"
-                    >
-                        Calculate
-                    </button>
-
+                    <button id="whatPercentButton" class="btn btn-primary">Calculate</button>
                 </div>
 
-
-                <div
-                    id="whatPercentResult"
-                    class="percentage-result"
-                >
-                    Result
-                </div>
-
+                <div id="whatPercentResult" class="percentage-result">Result</div>
             </div>
 
-
-            <!-- Percentage change -->
-
             <div class="card percentage-card">
-
-                <h3>
-                    Percentage change
-                </h3>
-
+                <h3>Percentage change</h3>
                 <p class="percentage-description">
                     Calculate percentage increase or decrease.
                 </p>
 
-
                 <div class="field">
-
-                    <label
-                        class="field-label"
-                        for="oldValue"
-                    >
-                        From
-                    </label>
-
-                    <input
-                        id="oldValue"
-                        type="number"
-                        step="any"
-                        placeholder="e.g. 100"
-                    >
-
+                    <label class="field-label" for="oldValue">From</label>
+                    <input id="oldValue" type="number" step="any" placeholder="e.g. 100">
                 </div>
 
-
                 <div class="field">
-
-                    <label
-                        class="field-label"
-                        for="newValue"
-                    >
-                        To
-                    </label>
-
-                    <input
-                        id="newValue"
-                        type="number"
-                        step="any"
-                        placeholder="e.g. 125"
-                    >
-
+                    <label class="field-label" for="newValue">To</label>
+                    <input id="newValue" type="number" step="any" placeholder="e.g. 125">
                 </div>
-
 
                 <div class="actions">
-
                     <button
                         id="percentageChangeButton"
                         class="btn btn-primary"
                     >
                         Calculate
                     </button>
-
                 </div>
 
-
-                <div
-                    id="percentageChangeResult"
-                    class="percentage-result"
-                >
-                    Result
-                </div>
-
+                <div id="percentageChangeResult" class="percentage-result">Result</div>
             </div>
 
         </div>
-
 
         <div class="card percentage-history">
 
             <div class="history-header">
 
                 <div class="history-title">
-
                     <h3>History</h3>
-
-                    <span
-                        id="percentageHistoryCount"
-                        class="history-count"
-                    >
-                        0
-                    </span>
-
+                    <span id="percentageHistoryCount" class="history-count">0</span>
                 </div>
 
-
                 <div class="actions">
-
-                    <button
-                        id="togglePercentageHistory"
-                        class="btn btn-light"
-                    >
-                        Hide
-                    </button>
-
-                    <button
-                        id="clearPercentageHistory"
-                        class="btn btn-danger"
-                    >
-                        Clear All
-                    </button>
-
+                    <button id="togglePercentageHistory" class="btn btn-light">Hide</button>
+                    <button id="clearPercentageHistory" class="btn btn-danger">Clear All</button>
                 </div>
 
             </div>
 
-
-            <div
-                id="percentageHistoryList"
-                class="history-list"
-            ></div>
+            <div id="percentageHistoryList" class="history-list"></div>
 
         </div>
 
     </section>
 
-
-    <!-- =====================================================
-         TIMES
-         ===================================================== -->
-
-    <section
-        id="timesPage"
-        class="page"
-    >
+    <section id="timesPage" class="page">
 
         <div class="page-heading">
-
             <h2>Times Table</h2>
-
-            <p>
-                Practice and memorise everyday multiplication facts.
-            </p>
-
+            <p>Practice and memorise everyday multiplication facts.</p>
         </div>
-
 
         <div class="card times-wrapper">
 
             <div class="times-selector">
 
                 <div class="field">
-
-                    <label
-                        class="field-label"
-                        for="timesNumber"
-                    >
-                        Choose a number
-                    </label>
-
+                    <label class="field-label" for="timesNumber">Choose a number</label>
                     <select id="timesNumber">
-
                         <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>
@@ -1559,179 +830,84 @@
                         <option value="18">18</option>
                         <option value="19">19</option>
                         <option value="20">20</option>
-
                     </select>
-
                 </div>
 
             </div>
 
-
-            <div
-                id="timesTable"
-                class="times-table"
-            ></div>
+            <div id="timesTable" class="times-table"></div>
 
         </div>
 
     </section>
 
-
-    <!-- =====================================================
-         BASE64
-         ===================================================== -->
-
-    <section
-        id="base64Page"
-        class="page"
-    >
+    <section id="base64Page" class="page">
 
         <div class="page-heading">
-
             <h2>Base64</h2>
-
-            <p>
-                Encode and decode Base64 directly in your browser.
-            </p>
-
+            <p>Encode and decode Base64 directly in your browser.</p>
         </div>
 
-
         <div class="grid-2">
-
-            <!-- Encoder -->
 
             <div class="card">
 
                 <div class="base64-card-header">
-
-                    <h3>
-                        Base64 Encoder
-                    </h3>
-
-                    <span class="badge">
-                        Encode
-                    </span>
-
+                    <h3>Base64 Encoder</h3>
+                    <span class="badge">Encode</span>
                 </div>
-
 
                 <textarea
                     id="encodeInput"
                     placeholder="Type or paste text here..."
                 ></textarea>
 
-
                 <div class="actions">
-
-                    <button
-                        id="encodeButton"
-                        class="btn btn-primary"
-                    >
-                        Encode
-                    </button>
-
-                    <button
-                        id="clearEncodeButton"
-                        class="btn btn-light"
-                    >
-                        Clear
-                    </button>
-
+                    <button id="encodeButton" class="btn btn-primary">Encode</button>
+                    <button id="clearEncodeButton" class="btn btn-light">Clear</button>
                 </div>
 
+                <div class="result-label">Encoded result</div>
 
-                <div class="result-label">
-                    Encoded result
-                </div>
-
-
-                <div
-                    id="encodedOutput"
-                    class="result-box"
-                >
+                <div id="encodedOutput" class="result-box">
                     Your result will appear here.
                 </div>
 
-
                 <div class="actions">
-
-                    <button
-                        id="copyEncodedButton"
-                        class="btn btn-light"
-                    >
+                    <button id="copyEncodedButton" class="btn btn-light">
                         Copy Result
                     </button>
-
                 </div>
 
             </div>
 
-
-            <!-- Decoder -->
-
             <div class="card">
 
                 <div class="base64-card-header">
-
-                    <h3>
-                        Base64 Decoder
-                    </h3>
-
-                    <span class="badge">
-                        Decode
-                    </span>
-
+                    <h3>Base64 Decoder</h3>
+                    <span class="badge">Decode</span>
                 </div>
-
 
                 <textarea
                     id="decodeInput"
                     placeholder="Paste Base64 here..."
                 ></textarea>
 
-
                 <div class="actions">
-
-                    <button
-                        id="decodeButton"
-                        class="btn btn-green"
-                    >
-                        Decode
-                    </button>
-
-                    <button
-                        id="clearDecodeButton"
-                        class="btn btn-light"
-                    >
-                        Clear
-                    </button>
-
+                    <button id="decodeButton" class="btn btn-green">Decode</button>
+                    <button id="clearDecodeButton" class="btn btn-light">Clear</button>
                 </div>
 
+                <div class="result-label">Decoded result</div>
 
-                <div class="result-label">
-                    Decoded result
-                </div>
-
-
-                <div
-                    id="decodedOutput"
-                    class="result-box"
-                >
+                <div id="decodedOutput" class="result-box">
                     Your result will appear here.
                 </div>
 
-
                 <div class="actions">
-
-                    <button
-                        id="copyDecodedButton"
-                        class="btn btn-light"
-                    >
+                    <button id="copyDecodedButton" class="btn btn-light">
                         Copy Result
                     </button>
-
                 </div>
 
             </div>
@@ -1742,79 +918,58 @@
 
 </div>
 
-
 <script>
-
-    /* =====================================================
-       NAVIGATION
-       ===================================================== */
-
     const navButtons =
         document.querySelectorAll(".nav-btn");
 
     const pages =
         document.querySelectorAll(".page");
 
-
     navButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            navButtons.forEach(item =>
+                item.classList.remove("active")
+            );
 
-        button.addEventListener(
-            "click",
-            () => {
+            pages.forEach(page =>
+                page.classList.remove("active")
+            );
 
-                navButtons.forEach(item =>
-                    item.classList.remove(
-                        "active"
-                    )
-                );
+            button.classList.add("active");
 
-                pages.forEach(page =>
-                    page.classList.remove(
-                        "active"
-                    )
-                );
-
-                button.classList.add(
-                    "active"
-                );
-
-                document
-                    .getElementById(
-                        button.dataset.page
-                    )
-                    .classList.add(
-                        "active"
-                    );
-
-            }
-        );
-
+            document
+                .getElementById(button.dataset.page)
+                .classList.add("active");
+        });
     });
 
 
-    /* =====================================================
-       HELPERS
-       ===================================================== */
-
     function formatNumber(number) {
-
         if (!Number.isFinite(number)) {
             return "";
         }
 
-        if (Number.isInteger(number)) {
-            return String(number);
+        const rounded =
+            Number(number.toFixed(10));
+
+        return rounded.toLocaleString("en-AU", {
+            maximumFractionDigits: 10
+        });
+    }
+
+
+    function rawNumber(number) {
+        if (!Number.isFinite(number)) {
+            return "";
         }
 
         return Number(
             number.toFixed(10)
         ).toString();
-
     }
 
 
     function readNumber(id) {
-
         const raw =
             document
                 .getElementById(id)
@@ -1833,13 +988,8 @@
         }
 
         return value;
-
     }
 
-
-    /* =====================================================
-       CALCULATOR
-       ===================================================== */
 
     const CALCULATOR_HISTORY_KEY =
         "utilityCalculatorHistory";
@@ -1857,20 +1007,70 @@
         );
 
 
-    function updateCalculatorDisplay() {
+    function prettyExpression(expression) {
+        return expression
+            .replaceAll("*", " × ")
+            .replaceAll("/", " ÷ ");
+    }
 
+
+    function formatCalculatorInput(expression) {
+        if (!expression) {
+            return "0";
+        }
+
+        const tokens =
+            expression.match(/\d*\.?\d+|[()+\-*/]/g);
+
+        if (
+            !tokens ||
+            tokens.join("") !== expression
+        ) {
+            return prettyExpression(expression);
+        }
+
+        return tokens.map(token => {
+            if (/^\d*\.?\d+$/.test(token)) {
+                if (token === "." || token.endsWith(".")) {
+                    const parts = token.split(".");
+                    const integerPart =
+                        parts[0] === ""
+                            ? "0"
+                            : Number(parts[0]).toLocaleString("en-AU");
+
+                    return integerPart + ".";
+                }
+
+                const number = Number(token);
+
+                if (Number.isFinite(number)) {
+                    return number.toLocaleString("en-AU", {
+                        maximumFractionDigits: 10
+                    });
+                }
+            }
+
+            if (token === "*") return " × ";
+            if (token === "/") return " ÷ ";
+
+            return token;
+        }).join("");
+    }
+
+
+    function updateCalculatorDisplay() {
         calculatorDisplay.classList.remove(
             "error"
         );
 
         calculatorDisplay.textContent =
-            calculatorInput || "0";
-
+            formatCalculatorInput(
+                calculatorInput
+            );
     }
 
 
     function calculateExpression(expression) {
-
         const clean =
             expression.replace(
                 /\s+/g,
@@ -1882,7 +1082,6 @@
                 /\d*\.?\d+|[()+\-*/]/g
             );
 
-
         if (
             !tokens ||
             tokens.join("") !== clean
@@ -1892,15 +1091,11 @@
             );
         }
 
-
         let position = 0;
 
-
         function parseExpression() {
-
             let value =
                 parseTerm();
-
 
             while (
                 position < tokens.length &&
@@ -1909,13 +1104,11 @@
                     tokens[position] === "-"
                 )
             ) {
-
                 const operator =
                     tokens[position++];
 
                 const next =
                     parseTerm();
-
 
                 if (operator === "+") {
                     value += next;
@@ -1923,20 +1116,14 @@
                 else {
                     value -= next;
                 }
-
             }
 
-
             return value;
-
         }
 
-
         function parseTerm() {
-
             let value =
                 parseFactor();
-
 
             while (
                 position < tokens.length &&
@@ -1945,25 +1132,20 @@
                     tokens[position] === "/"
                 )
             ) {
-
                 const operator =
                     tokens[position++];
 
                 const next =
                     parseFactor();
 
-
                 if (
                     operator === "/" &&
                     next === 0
                 ) {
-
                     throw new Error(
                         "Cannot divide by zero"
                     );
-
                 }
-
 
                 if (operator === "*") {
                     value *= next;
@@ -1971,141 +1153,91 @@
                 else {
                     value /= next;
                 }
-
             }
 
-
             return value;
-
         }
 
-
         function parseFactor() {
-
             const token =
                 tokens[position];
 
-
             if (token === "-") {
-
                 position++;
-
                 return -parseFactor();
-
             }
-
 
             if (token === "+") {
-
                 position++;
-
                 return parseFactor();
-
             }
 
-
             if (token === "(") {
-
                 position++;
 
                 const value =
                     parseExpression();
 
-
                 if (
                     tokens[position] !== ")"
                 ) {
-
                     throw new Error(
                         "Missing )"
                     );
-
                 }
-
 
                 position++;
 
                 return value;
-
             }
 
-
             if (token === undefined) {
-
                 throw new Error(
                     "Invalid calculation"
                 );
-
             }
-
 
             const number =
                 Number(token);
 
-
             if (!Number.isFinite(number)) {
-
                 throw new Error(
                     "Invalid calculation"
                 );
-
             }
-
 
             position++;
 
             return number;
-
         }
-
 
         const result =
             parseExpression();
 
-
         if (
             position !== tokens.length
         ) {
-
             throw new Error(
                 "Invalid calculation"
             );
-
         }
-
 
         if (!Number.isFinite(result)) {
-
             throw new Error(
                 "Invalid calculation"
             );
-
         }
 
-
         return result;
-
-    }
-
-
-    function prettyExpression(expression) {
-
-        return expression
-            .replaceAll("*", " × ")
-            .replaceAll("/", " ÷ ");
-
     }
 
 
     function runCalculator() {
-
         if (!calculatorInput) {
             return;
         }
 
-
         try {
-
             const original =
                 calculatorInput;
 
@@ -2116,7 +1248,6 @@
 
             const formatted =
                 formatNumber(result);
-
 
             calculatorExpression.textContent =
                 prettyExpression(
@@ -2130,50 +1261,40 @@
                 "error"
             );
 
-
             addCalculatorHistory(
                 original,
                 formatted
             );
 
-
             calculatorInput =
-                formatted;
-
+                rawNumber(result);
         }
         catch (error) {
-
             calculatorDisplay.textContent =
                 error.message;
 
             calculatorDisplay.classList.add(
                 "error"
             );
-
         }
-
     }
 
 
     document
         .querySelectorAll(".calc-key")
         .forEach(button => {
-
             button.addEventListener(
                 "click",
                 () => {
-
                     const value =
                         button.dataset.value;
 
                     const action =
                         button.dataset.action;
 
-
                     if (
                         value !== undefined
                     ) {
-
                         if (
                             calculatorInput.length >=
                             100
@@ -2186,14 +1307,11 @@
                         updateCalculatorDisplay();
 
                         return;
-
                     }
-
 
                     if (
                         action === "clear"
                     ) {
-
                         calculatorInput = "";
 
                         calculatorExpression.textContent =
@@ -2202,15 +1320,12 @@
                         updateCalculatorDisplay();
 
                         return;
-
                     }
-
 
                     if (
                         action ===
                         "backspace"
                     ) {
-
                         calculatorInput =
                             calculatorInput.slice(
                                 0,
@@ -2220,34 +1335,26 @@
                         updateCalculatorDisplay();
 
                         return;
-
                     }
-
 
                     if (
                         action ===
                         "calculate"
                     ) {
-
                         runCalculator();
-
                     }
-
                 }
             );
-
         });
 
 
     document.addEventListener(
         "keydown",
         event => {
-
             const page =
                 document.getElementById(
                     "calculatorPage"
                 );
-
 
             if (
                 !page.classList.contains(
@@ -2257,11 +1364,9 @@
                 return;
             }
 
-
             const tag =
                 document.activeElement
                     .tagName;
-
 
             if (
                 tag === "INPUT" ||
@@ -2271,40 +1376,38 @@
                 return;
             }
 
+            let key = event.key;
+
+            if (key === "x" || key === "X") {
+                key = "*";
+            }
 
             if (
                 /^[0-9+\-*/().]$/.test(
-                    event.key
+                    key
                 )
             ) {
-
                 calculatorInput +=
-                    event.key;
+                    key;
 
                 updateCalculatorDisplay();
 
                 return;
-
             }
-
 
             if (
                 event.key === "Enter"
             ) {
-
                 event.preventDefault();
 
                 runCalculator();
 
                 return;
-
             }
-
 
             if (
                 event.key === "Backspace"
             ) {
-
                 calculatorInput =
                     calculatorInput.slice(
                         0,
@@ -2314,60 +1417,43 @@
                 updateCalculatorDisplay();
 
                 return;
-
             }
-
 
             if (
                 event.key === "Escape"
             ) {
-
                 calculatorInput = "";
 
                 calculatorExpression.textContent =
                     "";
 
                 updateCalculatorDisplay();
-
             }
-
         }
     );
 
 
-    /* =====================================================
-       CALCULATOR HISTORY
-       ===================================================== */
-
     function getCalculatorHistory() {
-
         try {
-
             return JSON.parse(
                 localStorage.getItem(
                     CALCULATOR_HISTORY_KEY
                 )
             ) || [];
-
         }
         catch {
-
             return [];
-
         }
-
     }
 
 
     function saveCalculatorHistory(
         history
     ) {
-
         localStorage.setItem(
             CALCULATOR_HISTORY_KEY,
             JSON.stringify(history)
         );
-
     }
 
 
@@ -2375,42 +1461,31 @@
         expression,
         result
     ) {
-
         const history =
             getCalculatorHistory();
 
-
         history.unshift({
-
             id:
                 Date.now().toString() +
                 Math.random()
                     .toString(16)
                     .slice(2),
-
             expression,
-
             result,
-
             date:
                 new Date()
                     .toLocaleString()
-
         });
-
 
         saveCalculatorHistory(
             history.slice(0, 100)
         );
 
-
         renderCalculatorHistory();
-
     }
 
 
     function deleteCalculatorHistory(id) {
-
         const updated =
             getCalculatorHistory()
                 .filter(
@@ -2418,19 +1493,15 @@
                         item.id !== id
                 );
 
-
         saveCalculatorHistory(
             updated
         );
 
-
         renderCalculatorHistory();
-
     }
 
 
     function renderCalculatorHistory() {
-
         const list =
             document.getElementById(
                 "calculatorHistoryList"
@@ -2444,15 +1515,12 @@
         const history =
             getCalculatorHistory();
 
-
         count.textContent =
             history.length;
 
         list.innerHTML = "";
 
-
         if (!history.length) {
-
             const empty =
                 document.createElement(
                     "div"
@@ -2469,12 +1537,9 @@
             );
 
             return;
-
         }
 
-
         history.forEach(item => {
-
             const row =
                 document.createElement(
                     "div"
@@ -2483,7 +1548,6 @@
             row.className =
                 "history-item";
 
-
             const content =
                 document.createElement(
                     "div"
@@ -2491,7 +1555,6 @@
 
             content.className =
                 "history-content";
-
 
             const expression =
                 document.createElement(
@@ -2506,7 +1569,6 @@
                     item.expression
                 );
 
-
             const result =
                 document.createElement(
                     "div"
@@ -2517,7 +1579,6 @@
 
             result.textContent =
                 `= ${item.result}`;
-
 
             const date =
                 document.createElement(
@@ -2530,13 +1591,11 @@
             date.textContent =
                 item.date;
 
-
             content.append(
                 expression,
                 result,
                 date
             );
-
 
             const deleteButton =
                 document.createElement(
@@ -2549,31 +1608,24 @@
             deleteButton.textContent =
                 "Delete";
 
-
             deleteButton.addEventListener(
                 "click",
                 () => {
-
                     deleteCalculatorHistory(
                         item.id
                     );
-
                 }
             );
-
 
             row.append(
                 content,
                 deleteButton
             );
 
-
             list.appendChild(
                 row
             );
-
         });
-
     }
 
 
@@ -2584,7 +1636,6 @@
         .addEventListener(
             "click",
             function () {
-
                 const list =
                     document.getElementById(
                         "calculatorHistoryList"
@@ -2599,7 +1650,6 @@
                     hidden
                         ? "Show"
                         : "Hide";
-
             }
         );
 
@@ -2611,14 +1661,12 @@
         .addEventListener(
             "click",
             () => {
-
                 if (
                     !getCalculatorHistory()
                         .length
                 ) {
                     return;
                 }
-
 
                 if (
                     !confirm(
@@ -2628,55 +1676,40 @@
                     return;
                 }
 
-
                 localStorage.removeItem(
                     CALCULATOR_HISTORY_KEY
                 );
 
-
                 renderCalculatorHistory();
-
             }
         );
 
-
-    /* =====================================================
-       PERCENTAGE
-       ===================================================== */
 
     const PERCENTAGE_HISTORY_KEY =
         "utilityPercentageHistory";
 
 
     function getPercentageHistory() {
-
         try {
-
             return JSON.parse(
                 localStorage.getItem(
                     PERCENTAGE_HISTORY_KEY
                 )
             ) || [];
-
         }
         catch {
-
             return [];
-
         }
-
     }
 
 
     function savePercentageHistory(
         history
     ) {
-
         localStorage.setItem(
             PERCENTAGE_HISTORY_KEY,
             JSON.stringify(history)
         );
-
     }
 
 
@@ -2684,41 +1717,29 @@
         expression,
         result
     ) {
-
         const history =
             getPercentageHistory();
 
-
         history.unshift({
-
             id:
                 Date.now().toString() +
                 Math.random()
                     .toString(16)
                     .slice(2),
-
             expression,
-
             result,
-
             date:
                 new Date()
                     .toLocaleString()
-
         });
-
 
         savePercentageHistory(
             history.slice(0, 100)
         );
 
-
         renderPercentageHistory();
-
     }
 
-
-    /* Percentage of number + discount */
 
     document
         .getElementById(
@@ -2727,7 +1748,6 @@
         .addEventListener(
             "click",
             () => {
-
                 const percentage =
                     readNumber(
                         "percentValue"
@@ -2748,12 +1768,10 @@
                         "discountFromPercentResult"
                     );
 
-
                 if (
                     percentage === null ||
                     total === null
                 ) {
-
                     output.textContent =
                         "Enter valid numbers.";
 
@@ -2769,9 +1787,7 @@
                     );
 
                     return;
-
                 }
-
 
                 const percentageValue =
                     total *
@@ -2781,7 +1797,6 @@
                 const afterDiscount =
                     total -
                     percentageValue;
-
 
                 const formattedPercentage =
                     formatNumber(
@@ -2793,14 +1808,11 @@
                         afterDiscount
                     );
 
-
                 output.textContent =
-                    `${percentage}% of ${total} = ${formattedPercentage}`;
-
+                    `${percentage}% of ${formatNumber(total)} = ${formattedPercentage}`;
 
                 discountOutput.textContent =
                     `After ${percentage}% discount = ${formattedDiscount}`;
-
 
                 output.classList.remove(
                     "error"
@@ -2810,17 +1822,13 @@
                     "error"
                 );
 
-
                 addPercentageHistory(
-                    `${percentage}% of ${total}`,
+                    `${percentage}% of ${formatNumber(total)}`,
                     `${formattedPercentage} • After discount: ${formattedDiscount}`
                 );
-
             }
         );
 
-
-    /* X is what % of Y */
 
     document
         .getElementById(
@@ -2829,7 +1837,6 @@
         .addEventListener(
             "click",
             () => {
-
                 const part =
                     readNumber(
                         "partValue"
@@ -2845,12 +1852,10 @@
                         "whatPercentResult"
                     );
 
-
                 if (
                     part === null ||
                     whole === null
                 ) {
-
                     output.textContent =
                         "Enter valid numbers.";
 
@@ -2859,14 +1864,11 @@
                     );
 
                     return;
-
                 }
-
 
                 if (
                     whole === 0
                 ) {
-
                     output.textContent =
                         "Total cannot be zero.";
 
@@ -2875,9 +1877,7 @@
                     );
 
                     return;
-
                 }
-
 
                 const percentage =
                     (
@@ -2885,32 +1885,25 @@
                         whole
                     ) * 100;
 
-
                 const formatted =
                     formatNumber(
                         percentage
                     ) + "%";
 
-
                 output.textContent =
-                    `${part} is ${formatted} of ${whole}`;
-
+                    `${formatNumber(part)} is ${formatted} of ${formatNumber(whole)}`;
 
                 output.classList.remove(
                     "error"
                 );
 
-
                 addPercentageHistory(
-                    `${part} is what percent of ${whole}`,
+                    `${formatNumber(part)} is what percent of ${formatNumber(whole)}`,
                     formatted
                 );
-
             }
         );
 
-
-    /* Percentage change */
 
     document
         .getElementById(
@@ -2919,7 +1912,6 @@
         .addEventListener(
             "click",
             () => {
-
                 const oldValue =
                     readNumber(
                         "oldValue"
@@ -2935,12 +1927,10 @@
                         "percentageChangeResult"
                     );
 
-
                 if (
                     oldValue === null ||
                     newValue === null
                 ) {
-
                     output.textContent =
                         "Enter valid numbers.";
 
@@ -2949,14 +1939,11 @@
                     );
 
                     return;
-
                 }
-
 
                 if (
                     oldValue === 0
                 ) {
-
                     output.textContent =
                         "Starting value cannot be zero.";
 
@@ -2965,9 +1952,7 @@
                     );
 
                     return;
-
                 }
-
 
                 const percentage =
                     (
@@ -2978,66 +1963,51 @@
                         Math.abs(oldValue)
                     ) * 100;
 
-
                 let result;
-
 
                 if (
                     percentage > 0
                 ) {
-
                     result =
                         `${formatNumber(
                             Math.abs(
                                 percentage
                             )
                         )}% increase`;
-
                 }
                 else if (
                     percentage < 0
                 ) {
-
                     result =
                         `${formatNumber(
                             Math.abs(
                                 percentage
                             )
                         )}% decrease`;
-
                 }
                 else {
-
                     result =
                         "0% change";
-
                 }
-
 
                 output.textContent =
                     result;
-
 
                 output.classList.remove(
                     "error"
                 );
 
-
                 addPercentageHistory(
-                    `From ${oldValue} to ${newValue}`,
+                    `From ${formatNumber(oldValue)} to ${formatNumber(newValue)}`,
                     result
                 );
-
             }
         );
 
 
-    /* Percentage history */
-
     function deletePercentageHistory(
         id
     ) {
-
         const updated =
             getPercentageHistory()
                 .filter(
@@ -3045,19 +2015,15 @@
                         item.id !== id
                 );
 
-
         savePercentageHistory(
             updated
         );
 
-
         renderPercentageHistory();
-
     }
 
 
     function renderPercentageHistory() {
-
         const list =
             document.getElementById(
                 "percentageHistoryList"
@@ -3071,16 +2037,12 @@
         const history =
             getPercentageHistory();
 
-
         count.textContent =
             history.length;
 
-
         list.innerHTML = "";
 
-
         if (!history.length) {
-
             const empty =
                 document.createElement(
                     "div"
@@ -3092,18 +2054,14 @@
             empty.textContent =
                 "No calculations yet.";
 
-
             list.appendChild(
                 empty
             );
 
             return;
-
         }
 
-
         history.forEach(item => {
-
             const row =
                 document.createElement(
                     "div"
@@ -3112,7 +2070,6 @@
             row.className =
                 "history-item";
 
-
             const content =
                 document.createElement(
                     "div"
@@ -3120,7 +2077,6 @@
 
             content.className =
                 "history-content";
-
 
             const expression =
                 document.createElement(
@@ -3133,7 +2089,6 @@
             expression.textContent =
                 item.expression;
 
-
             const result =
                 document.createElement(
                     "div"
@@ -3144,7 +2099,6 @@
 
             result.textContent =
                 item.result;
-
 
             const date =
                 document.createElement(
@@ -3157,13 +2111,11 @@
             date.textContent =
                 item.date;
 
-
             content.append(
                 expression,
                 result,
                 date
             );
-
 
             const deleteButton =
                 document.createElement(
@@ -3176,31 +2128,24 @@
             deleteButton.textContent =
                 "Delete";
 
-
             deleteButton.addEventListener(
                 "click",
                 () => {
-
                     deletePercentageHistory(
                         item.id
                     );
-
                 }
             );
-
 
             row.append(
                 content,
                 deleteButton
             );
 
-
             list.appendChild(
                 row
             );
-
         });
-
     }
 
 
@@ -3211,7 +2156,6 @@
         .addEventListener(
             "click",
             function () {
-
                 const list =
                     document.getElementById(
                         "percentageHistoryList"
@@ -3222,12 +2166,10 @@
                         "hidden"
                     );
 
-
                 this.textContent =
                     hidden
                         ? "Show"
                         : "Hide";
-
             }
         );
 
@@ -3239,14 +2181,12 @@
         .addEventListener(
             "click",
             () => {
-
                 if (
                     !getPercentageHistory()
                         .length
                 ) {
                     return;
                 }
-
 
                 if (
                     !confirm(
@@ -3256,21 +2196,14 @@
                     return;
                 }
 
-
                 localStorage.removeItem(
                     PERCENTAGE_HISTORY_KEY
                 );
 
-
                 renderPercentageHistory();
-
             }
         );
 
-
-    /* =====================================================
-       TIMES TABLE
-       ===================================================== */
 
     const timesNumber =
         document.getElementById(
@@ -3287,7 +2220,6 @@
         number,
         multiplier
     ) {
-
         const row =
             document.createElement(
                 "div"
@@ -3295,7 +2227,6 @@
 
         row.className =
             "times-row";
-
 
         const left =
             document.createElement(
@@ -3308,7 +2239,6 @@
         left.textContent =
             `${number} × ${multiplier}`;
 
-
         const equals =
             document.createElement(
                 "div"
@@ -3320,7 +2250,6 @@
         equals.textContent =
             "=";
 
-
         const answer =
             document.createElement(
                 "div"
@@ -3330,8 +2259,9 @@
             "times-answer";
 
         answer.textContent =
-            number * multiplier;
-
+            formatNumber(
+                number * multiplier
+            );
 
         row.append(
             left,
@@ -3339,34 +2269,17 @@
             answer
         );
 
-
         return row;
-
     }
 
 
     function renderTimesTable() {
-
         const number =
             Number(
                 timesNumber.value
             );
 
-
         timesTable.innerHTML = "";
-
-
-        /*
-         * Desktop:
-         *
-         * 6 × 1 = 6      6 × 6  = 36
-         * 6 × 2 = 12     6 × 7  = 42
-         * 6 × 3 = 18     6 × 8  = 48
-         * 6 × 4 = 24     6 × 9  = 54
-         * 6 × 5 = 30     6 × 10 = 60
-         *
-         * Phone becomes a single column via CSS.
-         */
 
         const leftColumn =
             document.createElement(
@@ -3376,7 +2289,6 @@
         leftColumn.className =
             "times-column";
 
-
         const rightColumn =
             document.createElement(
                 "div"
@@ -3385,44 +2297,36 @@
         rightColumn.className =
             "times-column";
 
-
         for (
             let multiplier = 1;
             multiplier <= 5;
             multiplier++
         ) {
-
             leftColumn.appendChild(
                 createTimesRow(
                     number,
                     multiplier
                 )
             );
-
         }
-
 
         for (
             let multiplier = 6;
             multiplier <= 10;
             multiplier++
         ) {
-
             rightColumn.appendChild(
                 createTimesRow(
                     number,
                     multiplier
                 )
             );
-
         }
-
 
         timesTable.append(
             leftColumn,
             rightColumn
         );
-
     }
 
 
@@ -3432,49 +2336,35 @@
     );
 
 
-    /* =====================================================
-       BASE64
-       ===================================================== */
-
     function encodeBase64(text) {
-
         const bytes =
             new TextEncoder()
                 .encode(text);
 
-
         let binary = "";
-
 
         for (
             const byte of bytes
         ) {
-
             binary +=
                 String.fromCharCode(
                     byte
                 );
-
         }
 
-
         return btoa(binary);
-
     }
 
 
     function decodeBase64(base64) {
-
         const cleanBase64 =
             base64.replace(
                 /\s+/g,
                 ""
             );
 
-
         const binary =
             atob(cleanBase64);
-
 
         const bytes =
             Uint8Array.from(
@@ -3485,14 +2375,12 @@
                     )
             );
 
-
         return new TextDecoder(
             "utf-8",
             {
                 fatal: true
             }
         ).decode(bytes);
-
     }
 
 
@@ -3503,7 +2391,6 @@
         .addEventListener(
             "click",
             () => {
-
                 const input =
                     document.getElementById(
                         "encodeInput"
@@ -3514,9 +2401,7 @@
                         "encodedOutput"
                     );
 
-
                 if (!input) {
-
                     output.textContent =
                         "Enter text to encode.";
 
@@ -3525,20 +2410,16 @@
                     );
 
                     return;
-
                 }
-
 
                 output.textContent =
                     encodeBase64(
                         input
                     );
 
-
                 output.classList.remove(
                     "error"
                 );
-
             }
         );
 
@@ -3550,7 +2431,6 @@
         .addEventListener(
             "click",
             () => {
-
                 const input =
                     document
                         .getElementById(
@@ -3564,9 +2444,7 @@
                         "decodedOutput"
                     );
 
-
                 if (!input) {
-
                     output.textContent =
                         "Enter Base64 to decode.";
 
@@ -3575,35 +2453,26 @@
                     );
 
                     return;
-
                 }
 
-
                 try {
-
                     output.textContent =
                         decodeBase64(
                             input
                         );
 
-
                     output.classList.remove(
                         "error"
                     );
-
                 }
                 catch {
-
                     output.textContent =
                         "Invalid Base64 value.";
-
 
                     output.classList.add(
                         "error"
                     );
-
                 }
-
             }
         );
 
@@ -3615,28 +2484,23 @@
         .addEventListener(
             "click",
             () => {
-
                 document
                     .getElementById(
                         "encodeInput"
                     )
                     .value = "";
 
-
                 const output =
                     document.getElementById(
                         "encodedOutput"
                     );
 
-
                 output.textContent =
                     "Your result will appear here.";
-
 
                 output.classList.remove(
                     "error"
                 );
-
             }
         );
 
@@ -3648,46 +2512,35 @@
         .addEventListener(
             "click",
             () => {
-
                 document
                     .getElementById(
                         "decodeInput"
                     )
                     .value = "";
 
-
                 const output =
                     document.getElementById(
                         "decodedOutput"
                     );
 
-
                 output.textContent =
                     "Your result will appear here.";
-
 
                 output.classList.remove(
                     "error"
                 );
-
             }
         );
 
-
-    /* =====================================================
-       COPY
-       ===================================================== */
 
     async function copyText(
         elementId,
         button
     ) {
-
         const element =
             document.getElementById(
                 elementId
             );
-
 
         if (
             element.classList.contains(
@@ -3697,10 +2550,8 @@
             return;
         }
 
-
         const text =
             element.textContent.trim();
-
 
         if (
             !text ||
@@ -3710,40 +2561,29 @@
             return;
         }
 
-
         try {
-
             await navigator.clipboard
                 .writeText(text);
-
 
             const original =
                 button.textContent;
 
-
             button.textContent =
                 "Copied";
 
-
             setTimeout(
                 () => {
-
                     button.textContent =
                         original;
-
                 },
                 1100
             );
-
         }
         catch {
-
             alert(
                 "Unable to copy automatically. Select the text and copy it manually."
             );
-
         }
-
     }
 
 
@@ -3754,12 +2594,10 @@
         .addEventListener(
             "click",
             function () {
-
                 copyText(
                     "encodedOutput",
                     this
                 );
-
             }
         );
 
@@ -3771,26 +2609,17 @@
         .addEventListener(
             "click",
             function () {
-
                 copyText(
                     "decodedOutput",
                     this
                 );
-
             }
         );
 
 
-    /* =====================================================
-       INITIALISE
-       ===================================================== */
-
     renderCalculatorHistory();
-
     renderPercentageHistory();
-
     renderTimesTable();
-
 </script>
 
 </body>
