@@ -2,370 +2,3573 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Base64 Encoder/Decoder</title>
-
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, viewport-fit=cover"
     >
+
+    <title>Utility Tools</title>
 
     <style>
         * {
             box-sizing: border-box;
         }
 
+        :root {
+            --bg: #f5f7fb;
+            --card: #ffffff;
+            --text: #172033;
+            --muted: #6b7280;
+            --border: #e5e7eb;
+
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --primary-soft: #eff6ff;
+
+            --green: #059669;
+            --green-soft: #ecfdf5;
+
+            --red: #dc2626;
+            --red-soft: #fff1f2;
+
+            --orange: #ea580c;
+
+            --input: #f8fafc;
+
+            --radius: 18px;
+        }
+
+        html {
+            -webkit-text-size-adjust: 100%;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f4f4f9;
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+
+            font-family:
+                Inter,
+                ui-sans-serif,
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
         }
 
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .section {
-            margin-bottom: 30px;
-            padding: 20px;
-            border-radius: 8px;
-            background-color: #e9ecef;
-            border-left: 5px solid #808080;
-        }
-
-        textarea {
-            width: 100%;
-            height: 100px;
-            margin-bottom: 10px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            resize: vertical;
-            font-family: monospace;
+        button,
+        input,
+        textarea,
+        select {
+            font: inherit;
         }
 
         button {
-            margin-top: 10px;
-            padding: 10px 15px;
-            border: none;
-            color: white;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: opacity 0.3s;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        #encodeButton {
-            background-color: #007bff;
+        .app {
+            width: min(1100px, calc(100% - 28px));
+            margin: 0 auto;
+            padding:
+                max(22px, env(safe-area-inset-top))
+                0
+                max(30px, env(safe-area-inset-bottom));
         }
 
-        #decodeButton {
-            background-color: #28a745;
+        /*
+         * Header
+         */
+
+        .app-header {
+            margin-bottom: 18px;
         }
 
-        button:hover {
-            opacity: 0.9;
-        }
-
-        .result-box {
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            padding: 10px;
-            background-color: #f9f9f9;
-            position: relative;
-            max-height: 150px;
-            overflow: auto;
-        }
-
-        pre {
+        .app-header h1 {
             margin: 0;
-            white-space: pre-wrap;
-            word-break: break-word;
+            font-size: clamp(27px, 5vw, 38px);
+            letter-spacing: -1px;
         }
 
-        hr {
-            margin: 30px 0;
+        .app-header p {
+            margin: 7px 0 0;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /*
+         * Main tabs
+         */
+
+        .main-nav {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 5px;
+
+            width: 100%;
+
+            padding: 5px;
+
+            margin-bottom: 20px;
+
+            background: #e9eef6;
+
+            border-radius: 15px;
+        }
+
+        .nav-btn {
+            min-width: 0;
+            min-height: 45px;
+
+            padding: 9px 4px;
+
             border: 0;
-            border-top: 1px solid #ccc;
-        }
+            border-radius: 11px;
 
-        .copy-icon {
+            background: transparent;
+
+            color: #64748b;
+
+            font-size: 14px;
+            font-weight: 650;
+
             cursor: pointer;
-            margin-left: 10px;
+
+            transition:
+                background .18s ease,
+                color .18s ease,
+                box-shadow .18s ease;
         }
 
-        .result-header {
-            display: flex;
-            align-items: center;
+        .nav-btn.active {
+            background: white;
+            color: var(--primary);
+
+            box-shadow:
+                0 1px 4px rgba(15, 23, 42, .10);
         }
 
-        .copy-message {
-            margin-left: 10px;
-            color: green;
-            font-weight: bold;
+        /*
+         * Pages
+         */
+
+        .page {
             display: none;
         }
 
+        .page.active {
+            display: block;
+        }
+
+        /*
+         * Generic
+         */
+
+        .page-heading {
+            margin-bottom: 17px;
+        }
+
+        .page-heading h2 {
+            margin: 0 0 5px;
+            font-size: 23px;
+            letter-spacing: -.4px;
+        }
+
+        .page-heading p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .card {
+            min-width: 0;
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius);
+
+            padding: 20px;
+
+            box-shadow:
+                0 2px 8px rgba(15, 23, 42, .035);
+        }
+
+        .card h3 {
+            margin-top: 0;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .field {
+            margin-bottom: 12px;
+        }
+
+        .field:last-child {
+            margin-bottom: 0;
+        }
+
+        .field-label {
+            display: block;
+
+            margin-bottom: 6px;
+
+            color: var(--muted);
+
+            font-size: 12px;
+            font-weight: 650;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+
+            border: 1px solid var(--border);
+
+            border-radius: 12px;
+
+            background: white;
+
+            color: var(--text);
+
+            outline: none;
+
+            font-size: 16px;
+
+            transition:
+                border-color .18s ease,
+                box-shadow .18s ease;
+        }
+
+        input,
+        select {
+            min-height: 48px;
+            padding: 10px 13px;
+        }
+
+        textarea {
+            min-height: 145px;
+
+            padding: 13px;
+
+            resize: vertical;
+
+            line-height: 1.45;
+
+            font-family:
+                "SFMono-Regular",
+                Consolas,
+                "Liberation Mono",
+                monospace;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #93b4ff;
+
+            box-shadow:
+                0 0 0 3px rgba(37, 99, 235, .10);
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 8px;
+
+            margin-top: 12px;
+        }
+
+        .btn {
+            min-height: 43px;
+
+            padding: 9px 14px;
+
+            border: 0;
+            border-radius: 11px;
+
+            cursor: pointer;
+
+            font-size: 14px;
+            font-weight: 650;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+        }
+
+        .btn-green {
+            background: var(--green);
+            color: white;
+        }
+
+        .btn-light {
+            background: #eef2f7;
+            color: #374151;
+        }
+
+        .btn-danger {
+            background: var(--red-soft);
+            color: var(--red);
+        }
+
         .error {
-            color: #dc3545;
+            color: var(--red) !important;
+        }
+
+        /*
+         * Calculator
+         */
+
+        .calculator-layout {
+            display: grid;
+            grid-template-columns: minmax(310px, 440px) 1fr;
+            gap: 18px;
+            align-items: start;
+        }
+
+        .calculator-card {
+            padding: 16px;
+        }
+
+        .calculator-display {
+            min-height: 112px;
+
+            margin-bottom: 13px;
+
+            padding: 17px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+
+            background: #111827;
+
+            border-radius: 16px;
+
+            text-align: right;
+
+            overflow: hidden;
+        }
+
+        .calculator-expression {
+            min-height: 20px;
+
+            margin-bottom: 5px;
+
+            color: #9ca3af;
+
+            font-size: 13px;
+
+            word-break: break-word;
+        }
+
+        .calculator-value {
+            color: white;
+
+            font-size: clamp(29px, 7vw, 40px);
+            font-weight: 700;
+
+            line-height: 1.1;
+
+            word-break: break-word;
+        }
+
+        .calculator-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+
+        .calc-key {
+            min-width: 0;
+            min-height: 58px;
+
+            border: 0;
+            border-radius: 14px;
+
+            background: #f1f5f9;
+
+            color: var(--text);
+
+            cursor: pointer;
+
+            font-size: 20px;
+            font-weight: 650;
+
+            transition:
+                transform .08s ease,
+                background .15s ease;
+        }
+
+        .calc-key:active {
+            transform: scale(.96);
+        }
+
+        .calc-key.operation {
+            background: #eaf1ff;
+            color: var(--primary);
+        }
+
+        .calc-key.clear {
+            background: var(--red-soft);
+            color: var(--red);
+        }
+
+        .calc-key.equals {
+            background: var(--primary);
+            color: white;
+        }
+
+        /*
+         * History
+         */
+
+        .history-header {
+            display: flex;
+
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+        }
+
+        .history-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .history-title h3 {
+            margin: 0;
+        }
+
+        .history-count {
+            padding: 3px 8px;
+
+            border-radius: 999px;
+
+            background: #eef2f7;
+
+            color: var(--muted);
+
+            font-size: 12px;
+        }
+
+        .history-list {
+            margin-top: 12px;
+        }
+
+        .history-list.hidden {
+            display: none;
+        }
+
+        .history-item {
+            display: flex;
+
+            justify-content: space-between;
+            align-items: flex-start;
+
+            gap: 12px;
+
+            padding: 12px 0;
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .history-item:last-child {
+            border-bottom: 0;
+        }
+
+        .history-content {
+            min-width: 0;
+        }
+
+        .history-expression {
+            font-size: 13px;
+            color: var(--muted);
+
+            overflow-wrap: anywhere;
+        }
+
+        .history-result {
+            margin-top: 3px;
+
+            font-size: 17px;
+            font-weight: 700;
+
+            overflow-wrap: anywhere;
+        }
+
+        .history-date {
+            margin-top: 4px;
+
+            color: #9ca3af;
+
+            font-size: 11px;
+        }
+
+        .delete-history {
+            flex-shrink: 0;
+
+            border: 0;
+
+            background: transparent;
+
+            color: var(--red);
+
+            cursor: pointer;
+
+            padding: 7px;
+
+            font-size: 13px;
+            font-weight: 650;
+        }
+
+        .empty-state {
+            padding: 25px 10px;
+
+            color: var(--muted);
+
+            text-align: center;
+
+            font-size: 14px;
+        }
+
+        /*
+         * Percentage
+         */
+
+        .percentage-card {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .percentage-card h3 {
+            margin-bottom: 5px;
+
+            font-size: 17px;
+        }
+
+        .percentage-description {
+            min-height: 42px;
+
+            margin: 0 0 15px;
+
+            color: var(--muted);
+
+            font-size: 13px;
+            line-height: 1.45;
+        }
+
+        .percentage-result {
+            min-height: 54px;
+
+            margin-top: 14px;
+
+            padding: 13px;
+
+            display: flex;
+            align-items: center;
+
+            border-radius: 12px;
+
+            background: var(--primary-soft);
+
+            color: #1e40af;
+
+            font-size: 17px;
+            font-weight: 700;
+
+            overflow-wrap: anywhere;
+        }
+
+        .percentage-history {
+            margin-top: 18px;
+        }
+
+        /*
+         * Times
+         */
+
+        .times-wrapper {
+            max-width: 700px;
+        }
+
+        .times-selector {
+            display: flex;
+
+            align-items: end;
+
+            gap: 12px;
+
+            margin-bottom: 20px;
+        }
+
+        .times-selector .field {
+            width: 220px;
+            margin: 0;
+        }
+
+        .times-table {
+            display: grid;
+
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+
+            gap: 9px;
+        }
+
+        .times-row {
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1fr)
+                auto
+                minmax(0, 1fr);
+
+            align-items: center;
+
+            gap: 8px;
+
+            min-height: 54px;
+
+            padding: 11px 16px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 13px;
+
+            background: var(--input);
+
+            font-size: 17px;
+            font-weight: 600;
+        }
+
+        .times-left {
+            text-align: right;
+        }
+
+        .times-equals {
+            color: var(--muted);
+        }
+
+        .times-answer {
+            color: var(--primary);
+
+            font-size: 18px;
+            font-weight: 750;
+        }
+
+        /*
+         * Base64
+         */
+
+        .base64-card-header {
+            display: flex;
+
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 10px;
+
+            margin-bottom: 14px;
+        }
+
+        .base64-card-header h3 {
+            margin: 0;
+        }
+
+        .badge {
+            padding: 4px 9px;
+
+            border-radius: 999px;
+
+            background: var(--primary-soft);
+
+            color: var(--primary);
+
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .result-label {
+            margin: 16px 0 6px;
+
+            color: var(--muted);
+
+            font-size: 12px;
+            font-weight: 650;
+        }
+
+        .result-box {
+            min-height: 68px;
+
+            padding: 13px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 12px;
+
+            background: var(--input);
+
+            font-family:
+                "SFMono-Regular",
+                Consolas,
+                monospace;
+
+            font-size: 14px;
+
+            white-space: pre-wrap;
+            word-break: break-word;
+
+            user-select: text;
+        }
+
+        /*
+         * Responsive
+         */
+
+        @media (max-width: 900px) {
+
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .calculator-layout {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media (max-width: 720px) {
+
+            body {
+                background: #f5f7fb;
+            }
+
+            .app {
+                width: 100%;
+
+                padding:
+                    max(16px, env(safe-area-inset-top))
+                    12px
+                    max(24px, env(safe-area-inset-bottom));
+            }
+
+            .app-header {
+                padding: 0 4px;
+            }
+
+            .app-header h1 {
+                font-size: 26px;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 16px;
+
+                border-radius: 17px;
+            }
+
+            .main-nav {
+                position: sticky;
+                top: 8px;
+
+                z-index: 100;
+
+                margin-bottom: 18px;
+
+                box-shadow:
+                    0 5px 18px rgba(15, 23, 42, .08);
+            }
+
+            .nav-btn {
+                min-height: 44px;
+
+                padding-left: 2px;
+                padding-right: 2px;
+
+                font-size: 13px;
+            }
+
+            .calculator-card {
+                padding: 12px;
+            }
+
+            .calc-key {
+                min-height: 58px;
+            }
+
+            .times-table {
+                grid-template-columns: 1fr;
+            }
+
+            .times-selector {
+                display: block;
+            }
+
+            .times-selector .field {
+                width: 100%;
+            }
+
+        }
+
+        @media (max-width: 390px) {
+
+            .nav-btn {
+                font-size: 12.5px;
+            }
+
+            .calculator-buttons {
+                gap: 6px;
+            }
+
+            .calc-key {
+                min-height: 54px;
+
+                border-radius: 12px;
+
+                font-size: 18px;
+            }
+
+            .history-header .actions {
+                width: 100%;
+            }
+
+            .history-header .actions .btn {
+                flex: 1;
+            }
+
         }
     </style>
 </head>
 
 <body>
 
-<h1>Base64 Encoder/Decoder</h1>
+<div class="app">
 
-<div class="container">
+    <!-- Header -->
 
-    <!-- Encoder -->
-    <div class="section">
+    <header class="app-header">
 
-        <h2>Encoder</h2>
+        <h1>Utility Tools</h1>
 
-        <textarea
-            id="encodeInput"
-            placeholder="Enter text to encode..."
-        ></textarea>
+        <p>
+            Simple everyday tools that run directly in your browser.
+        </p>
 
-        <button id="encodeButton">
-            Encode
+    </header>
+
+
+    <!-- Main navigation -->
+
+    <nav class="main-nav">
+
+        <button
+            class="nav-btn active"
+            data-page="calculatorPage"
+        >
+            Calc
         </button>
 
-        <div class="result-header">
-            <h3>Encoded Result:</h3>
-
-            <i
-                class="fas fa-copy copy-icon"
-                id="copyEncode"
-                title="Copy to clipboard"
-                style="color: #007bff;"
-            ></i>
-
-            <span
-                class="copy-message"
-                id="encodeMessage"
-            >
-                Copied!
-            </span>
-        </div>
-
-        <div class="result-box">
-            <pre id="encodedOutput">Waiting for result...</pre>
-        </div>
-
-    </div>
-
-    <hr>
-
-    <!-- Decoder -->
-    <div class="section">
-
-        <h2>Decoder</h2>
-
-        <textarea
-            id="decodeInput"
-            placeholder="Enter Base64 to decode..."
-        ></textarea>
-
-        <button id="decodeButton">
-            Decode
+        <button
+            class="nav-btn"
+            data-page="percentagePage"
+        >
+            %
         </button>
 
-        <div class="result-header">
+        <button
+            class="nav-btn"
+            data-page="timesPage"
+        >
+            Times
+        </button>
 
-            <h3>Decoded Result:</h3>
+        <button
+            class="nav-btn"
+            data-page="base64Page"
+        >
+            Base64
+        </button>
 
-            <i
-                class="fas fa-copy copy-icon"
-                id="copyDecode"
-                title="Copy to clipboard"
-                style="color: #28a745;"
-            ></i>
+    </nav>
 
-            <span
-                class="copy-message"
-                id="decodeMessage"
-            >
-                Copied!
-            </span>
+
+    <!-- ================================================= -->
+    <!-- CALCULATOR -->
+    <!-- ================================================= -->
+
+    <section
+        id="calculatorPage"
+        class="page active"
+    >
+
+        <div class="page-heading">
+
+            <h2>Calculator</h2>
+
+            <p>
+                Quick calculations with parentheses and saved history.
+            </p>
 
         </div>
 
-        <div class="result-box">
-            <pre id="decodedOutput">Waiting for result...</pre>
+
+        <div class="calculator-layout">
+
+
+            <!-- Calculator -->
+
+            <div class="card calculator-card">
+
+                <div class="calculator-display">
+
+                    <div
+                        id="calculatorExpression"
+                        class="calculator-expression"
+                    ></div>
+
+                    <div
+                        id="calculatorDisplay"
+                        class="calculator-value"
+                        aria-live="polite"
+                    >
+                        0
+                    </div>
+
+                </div>
+
+
+                <div class="calculator-buttons">
+
+                    <button
+                        class="calc-key clear"
+                        data-action="clear"
+                    >
+                        CS
+                    </button>
+
+                    <button
+                        class="calc-key operation"
+                        data-value="("
+                    >
+                        (
+                    </button>
+
+                    <button
+                        class="calc-key operation"
+                        data-value=")"
+                    >
+                        )
+                    </button>
+
+                    <button
+                        class="calc-key operation"
+                        data-value="/"
+                    >
+                        ÷
+                    </button>
+
+
+                    <button class="calc-key" data-value="7">7</button>
+                    <button class="calc-key" data-value="8">8</button>
+                    <button class="calc-key" data-value="9">9</button>
+
+                    <button
+                        class="calc-key operation"
+                        data-value="*"
+                    >
+                        ×
+                    </button>
+
+
+                    <button class="calc-key" data-value="4">4</button>
+                    <button class="calc-key" data-value="5">5</button>
+                    <button class="calc-key" data-value="6">6</button>
+
+                    <button
+                        class="calc-key operation"
+                        data-value="-"
+                    >
+                        −
+                    </button>
+
+
+                    <button class="calc-key" data-value="1">1</button>
+                    <button class="calc-key" data-value="2">2</button>
+                    <button class="calc-key" data-value="3">3</button>
+
+                    <button
+                        class="calc-key operation"
+                        data-value="+"
+                    >
+                        +
+                    </button>
+
+
+                    <button
+                        class="calc-key"
+                        data-action="backspace"
+                        aria-label="Backspace"
+                    >
+                        ⌫
+                    </button>
+
+                    <button class="calc-key" data-value="0">
+                        0
+                    </button>
+
+                    <button class="calc-key" data-value=".">
+                        .
+                    </button>
+
+                    <button
+                        class="calc-key equals"
+                        data-action="calculate"
+                    >
+                        =
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Calculator history -->
+
+            <div class="card">
+
+                <div class="history-header">
+
+                    <div class="history-title">
+
+                        <h3>History</h3>
+
+                        <span
+                            id="calculatorHistoryCount"
+                            class="history-count"
+                        >
+                            0
+                        </span>
+
+                    </div>
+
+
+                    <div class="actions">
+
+                        <button
+                            id="toggleCalculatorHistory"
+                            class="btn btn-light"
+                        >
+                            Hide
+                        </button>
+
+                        <button
+                            id="clearCalculatorHistory"
+                            class="btn btn-danger"
+                        >
+                            Clear All
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="calculatorHistoryList"
+                    class="history-list"
+                ></div>
+
+            </div>
+
         </div>
 
-    </div>
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- PERCENTAGE -->
+    <!-- ================================================= -->
+
+    <section
+        id="percentagePage"
+        class="page"
+    >
+
+        <div class="page-heading">
+
+            <h2>Percentage Calculator</h2>
+
+            <p>
+                Calculate common percentages quickly.
+            </p>
+
+        </div>
+
+
+        <div class="grid-3">
+
+
+            <!-- What is X% of Y -->
+
+            <div class="card percentage-card">
+
+                <h3>Percentage of a number</h3>
+
+                <p class="percentage-description">
+                    What is X% of Y?
+                </p>
+
+
+                <div class="field">
+
+                    <label
+                        class="field-label"
+                        for="percentValue"
+                    >
+                        Percentage
+                    </label>
+
+                    <input
+                        id="percentValue"
+                        type="number"
+                        step="any"
+                        placeholder="e.g. 20"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label
+                        class="field-label"
+                        for="percentTotal"
+                    >
+                        Number
+                    </label>
+
+                    <input
+                        id="percentTotal"
+                        type="number"
+                        step="any"
+                        placeholder="e.g. 500"
+                    >
+
+                </div>
+
+
+                <div class="actions">
+
+                    <button
+                        id="percentOfButton"
+                        class="btn btn-primary"
+                    >
+                        Calculate
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="percentOfResult"
+                    class="percentage-result"
+                >
+                    Result
+                </div>
+
+            </div>
+
+
+            <!-- X is what percent of Y -->
+
+            <div class="card percentage-card">
+
+                <h3>What percentage?</h3>
+
+                <p class="percentage-description">
+                    X is what percent of Y?
+                </p>
+
+
+                <div class="field">
+
+                    <label
+                        class="field-label"
+                        for="partValue"
+                    >
+                        Value
+                    </label>
+
+                    <input
+                        id="partValue"
+                        type="number"
+                        step="any"
+                        placeholder="e.g. 25"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label
+                        class="field-label"
+                        for="wholeValue"
+                    >
+                        Total
+                    </label>
+
+                    <input
+                        id="wholeValue"
+                        type="number"
+                        step="any"
+                        placeholder="e.g. 100"
+                    >
+
+                </div>
+
+
+                <div class="actions">
+
+                    <button
+                        id="whatPercentButton"
+                        class="btn btn-primary"
+                    >
+                        Calculate
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="whatPercentResult"
+                    class="percentage-result"
+                >
+                    Result
+                </div>
+
+            </div>
+
+
+            <!-- Increase / Decrease -->
+
+            <div class="card percentage-card">
+
+                <h3>Percentage change</h3>
+
+                <p class="percentage-description">
+                    Calculate the percentage increase or decrease.
+                </p>
+
+
+                <div class="field">
+
+                    <label
+                        class="field-label"
+                        for="oldValue"
+                    >
+                        From
+                    </label>
+
+                    <input
+                        id="oldValue"
+                        type="number"
+                        step="any"
+                        placeholder="e.g. 100"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label
+                        class="field-label"
+                        for="newValue"
+                    >
+                        To
+                    </label>
+
+                    <input
+                        id="newValue"
+                        type="number"
+                        step="any"
+                        placeholder="e.g. 125"
+                    >
+
+                </div>
+
+
+                <div class="actions">
+
+                    <button
+                        id="percentageChangeButton"
+                        class="btn btn-primary"
+                    >
+                        Calculate
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="percentageChangeResult"
+                    class="percentage-result"
+                >
+                    Result
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Percentage history -->
+
+        <div class="card percentage-history">
+
+            <div class="history-header">
+
+                <div class="history-title">
+
+                    <h3>History</h3>
+
+                    <span
+                        id="percentageHistoryCount"
+                        class="history-count"
+                    >
+                        0
+                    </span>
+
+                </div>
+
+
+                <div class="actions">
+
+                    <button
+                        id="togglePercentageHistory"
+                        class="btn btn-light"
+                    >
+                        Hide
+                    </button>
+
+                    <button
+                        id="clearPercentageHistory"
+                        class="btn btn-danger"
+                    >
+                        Clear All
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="percentageHistoryList"
+                class="history-list"
+            ></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- TIMES -->
+    <!-- ================================================= -->
+
+    <section
+        id="timesPage"
+        class="page"
+    >
+
+        <div class="page-heading">
+
+            <h2>Times Table</h2>
+
+            <p>
+                Practice and memorise everyday multiplication facts.
+            </p>
+
+        </div>
+
+
+        <div class="card times-wrapper">
+
+            <div class="times-selector">
+
+                <div class="field">
+
+                    <label
+                        class="field-label"
+                        for="timesNumber"
+                    >
+                        Choose a number
+                    </label>
+
+
+                    <select id="timesNumber">
+
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="timesTable"
+                class="times-table"
+            ></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- BASE64 -->
+    <!-- ================================================= -->
+
+    <section
+        id="base64Page"
+        class="page"
+    >
+
+        <div class="page-heading">
+
+            <h2>Base64</h2>
+
+            <p>
+                Encode and decode Base64 directly in your browser.
+            </p>
+
+        </div>
+
+
+        <div class="grid-2">
+
+
+            <!-- Encoder -->
+
+            <div class="card">
+
+                <div class="base64-card-header">
+
+                    <h3>Base64 Encoder</h3>
+
+                    <span class="badge">
+                        Encode
+                    </span>
+
+                </div>
+
+
+                <textarea
+                    id="encodeInput"
+                    placeholder="Type or paste text here..."
+                ></textarea>
+
+
+                <div class="actions">
+
+                    <button
+                        id="encodeButton"
+                        class="btn btn-primary"
+                    >
+                        Encode
+                    </button>
+
+                    <button
+                        id="clearEncodeButton"
+                        class="btn btn-light"
+                    >
+                        Clear
+                    </button>
+
+                </div>
+
+
+                <div class="result-label">
+                    Encoded result
+                </div>
+
+
+                <div
+                    id="encodedOutput"
+                    class="result-box"
+                >
+                    Your result will appear here.
+                </div>
+
+
+                <div class="actions">
+
+                    <button
+                        id="copyEncodedButton"
+                        class="btn btn-light"
+                    >
+                        Copy Result
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Decoder -->
+
+            <div class="card">
+
+                <div class="base64-card-header">
+
+                    <h3>Base64 Decoder</h3>
+
+                    <span class="badge">
+                        Decode
+                    </span>
+
+                </div>
+
+
+                <textarea
+                    id="decodeInput"
+                    placeholder="Paste Base64 here..."
+                ></textarea>
+
+
+                <div class="actions">
+
+                    <button
+                        id="decodeButton"
+                        class="btn btn-green"
+                    >
+                        Decode
+                    </button>
+
+                    <button
+                        id="clearDecodeButton"
+                        class="btn btn-light"
+                    >
+                        Clear
+                    </button>
+
+                </div>
+
+
+                <div class="result-label">
+                    Decoded result
+                </div>
+
+
+                <div
+                    id="decodedOutput"
+                    class="result-box"
+                >
+                    Your result will appear here.
+                </div>
+
+
+                <div class="actions">
+
+                    <button
+                        id="copyDecodedButton"
+                        class="btn btn-light"
+                    >
+                        Copy Result
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
 
 </div>
 
 
 <script>
+
     /*
-     * UTF-8 safe Base64 encoder
+     * =====================================================
+     * NAVIGATION
+     * =====================================================
      */
+
+    const navButtons =
+        document.querySelectorAll(".nav-btn");
+
+    const pages =
+        document.querySelectorAll(".page");
+
+
+    navButtons.forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            navButtons.forEach(item =>
+                item.classList.remove("active")
+            );
+
+            pages.forEach(page =>
+                page.classList.remove("active")
+            );
+
+            button.classList.add("active");
+
+            document
+                .getElementById(button.dataset.page)
+                .classList.add("active");
+
+        });
+
+    });
+
+
+
+    /*
+     * =====================================================
+     * COMMON HELPERS
+     * =====================================================
+     */
+
+    function formatNumber(number) {
+
+        if (!Number.isFinite(number)) {
+            return "";
+        }
+
+        if (Number.isInteger(number)) {
+            return String(number);
+        }
+
+        return Number(
+            number.toFixed(10)
+        ).toString();
+
+    }
+
+
+    function readNumber(id) {
+
+        const element =
+            document.getElementById(id);
+
+        const raw =
+            element.value.trim();
+
+        if (raw === "") {
+            return null;
+        }
+
+        const value =
+            Number(raw);
+
+        if (!Number.isFinite(value)) {
+            return null;
+        }
+
+        return value;
+
+    }
+
+
+
+    /*
+     * =====================================================
+     * CALCULATOR
+     * =====================================================
+     */
+
+    const CALCULATOR_HISTORY_KEY =
+        "utilityCalculatorHistory";
+
+    let calculatorInput = "";
+
+
+    const calculatorDisplay =
+        document.getElementById(
+            "calculatorDisplay"
+        );
+
+    const calculatorExpression =
+        document.getElementById(
+            "calculatorExpression"
+        );
+
+
+    function updateCalculatorDisplay() {
+
+        calculatorDisplay.classList.remove(
+            "error"
+        );
+
+        calculatorDisplay.textContent =
+            calculatorInput || "0";
+
+    }
+
+
+
+    /*
+     * Safe expression parser
+     */
+
+    function calculateExpression(expression) {
+
+        const clean =
+            expression.replace(/\s+/g, "");
+
+        const tokens =
+            clean.match(
+                /\d*\.?\d+|[()+\-*/]/g
+            );
+
+
+        if (
+            !tokens ||
+            tokens.join("") !== clean
+        ) {
+            throw new Error(
+                "Invalid calculation"
+            );
+        }
+
+
+        let position = 0;
+
+
+        function parseExpression() {
+
+            let value =
+                parseTerm();
+
+
+            while (
+                position < tokens.length &&
+                (
+                    tokens[position] === "+" ||
+                    tokens[position] === "-"
+                )
+            ) {
+
+                const operator =
+                    tokens[position++];
+
+                const next =
+                    parseTerm();
+
+
+                if (operator === "+") {
+                    value += next;
+                }
+                else {
+                    value -= next;
+                }
+
+            }
+
+
+            return value;
+
+        }
+
+
+        function parseTerm() {
+
+            let value =
+                parseFactor();
+
+
+            while (
+                position < tokens.length &&
+                (
+                    tokens[position] === "*" ||
+                    tokens[position] === "/"
+                )
+            ) {
+
+                const operator =
+                    tokens[position++];
+
+                const next =
+                    parseFactor();
+
+
+                if (
+                    operator === "/" &&
+                    next === 0
+                ) {
+                    throw new Error(
+                        "Cannot divide by zero"
+                    );
+                }
+
+
+                if (operator === "*") {
+                    value *= next;
+                }
+                else {
+                    value /= next;
+                }
+
+            }
+
+
+            return value;
+
+        }
+
+
+        function parseFactor() {
+
+            const token =
+                tokens[position];
+
+
+            if (token === "-") {
+
+                position++;
+
+                return -parseFactor();
+
+            }
+
+
+            if (token === "+") {
+
+                position++;
+
+                return parseFactor();
+
+            }
+
+
+            if (token === "(") {
+
+                position++;
+
+                const value =
+                    parseExpression();
+
+
+                if (
+                    tokens[position] !== ")"
+                ) {
+                    throw new Error(
+                        "Missing )"
+                    );
+                }
+
+
+                position++;
+
+                return value;
+
+            }
+
+
+            if (token === undefined) {
+
+                throw new Error(
+                    "Invalid calculation"
+                );
+
+            }
+
+
+            const number =
+                Number(token);
+
+
+            if (!Number.isFinite(number)) {
+
+                throw new Error(
+                    "Invalid calculation"
+                );
+
+            }
+
+
+            position++;
+
+            return number;
+
+        }
+
+
+        const result =
+            parseExpression();
+
+
+        if (
+            position !== tokens.length
+        ) {
+            throw new Error(
+                "Invalid calculation"
+            );
+        }
+
+
+        if (!Number.isFinite(result)) {
+
+            throw new Error(
+                "Invalid calculation"
+            );
+
+        }
+
+
+        return result;
+
+    }
+
+
+
+    /*
+     * Calculator buttons
+     */
+
+    document
+        .querySelectorAll(".calc-key")
+        .forEach(button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    const value =
+                        button.dataset.value;
+
+                    const action =
+                        button.dataset.action;
+
+
+                    if (
+                        value !== undefined
+                    ) {
+
+                        if (
+                            calculatorInput.length >= 100
+                        ) {
+                            return;
+                        }
+
+
+                        calculatorInput += value;
+
+                        updateCalculatorDisplay();
+
+                        return;
+
+                    }
+
+
+                    if (
+                        action === "clear"
+                    ) {
+
+                        calculatorInput = "";
+
+                        calculatorExpression.textContent =
+                            "";
+
+                        updateCalculatorDisplay();
+
+                        return;
+
+                    }
+
+
+                    if (
+                        action === "backspace"
+                    ) {
+
+                        calculatorInput =
+                            calculatorInput.slice(
+                                0,
+                                -1
+                            );
+
+                        updateCalculatorDisplay();
+
+                        return;
+
+                    }
+
+
+                    if (
+                        action === "calculate"
+                    ) {
+
+                        runCalculator();
+
+                    }
+
+                }
+            );
+
+        });
+
+
+
+    function runCalculator() {
+
+        if (!calculatorInput) {
+            return;
+        }
+
+
+        try {
+
+            const original =
+                calculatorInput;
+
+            const result =
+                calculateExpression(
+                    original
+                );
+
+            const formatted =
+                formatNumber(result);
+
+
+            calculatorExpression.textContent =
+                prettyExpression(original);
+
+
+            calculatorDisplay.textContent =
+                formatted;
+
+            calculatorDisplay.classList.remove(
+                "error"
+            );
+
+
+            addCalculatorHistory(
+                original,
+                formatted
+            );
+
+
+            /*
+             * Continue from result
+             */
+
+            calculatorInput =
+                formatted;
+
+        }
+        catch (error) {
+
+            calculatorDisplay.textContent =
+                error.message;
+
+            calculatorDisplay.classList.add(
+                "error"
+            );
+
+        }
+
+    }
+
+
+    function prettyExpression(expression) {
+
+        return expression
+            .replaceAll("*", " × ")
+            .replaceAll("/", " ÷ ");
+
+    }
+
+
+
+    /*
+     * Keyboard calculator
+     */
+
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            const page =
+                document.getElementById(
+                    "calculatorPage"
+                );
+
+
+            if (
+                !page.classList.contains(
+                    "active"
+                )
+            ) {
+                return;
+            }
+
+
+            /*
+             * Do not capture typing when user
+             * is inside an input/textarea/select
+             */
+
+            const tag =
+                document.activeElement.tagName;
+
+            if (
+                tag === "INPUT" ||
+                tag === "TEXTAREA" ||
+                tag === "SELECT"
+            ) {
+                return;
+            }
+
+
+            if (
+                /^[0-9+\-*/().]$/.test(
+                    event.key
+                )
+            ) {
+
+                calculatorInput +=
+                    event.key;
+
+                updateCalculatorDisplay();
+
+                return;
+
+            }
+
+
+            if (
+                event.key === "Enter"
+            ) {
+
+                event.preventDefault();
+
+                runCalculator();
+
+                return;
+
+            }
+
+
+            if (
+                event.key === "Backspace"
+            ) {
+
+                calculatorInput =
+                    calculatorInput.slice(
+                        0,
+                        -1
+                    );
+
+                updateCalculatorDisplay();
+
+                return;
+
+            }
+
+
+            if (
+                event.key === "Escape"
+            ) {
+
+                calculatorInput = "";
+
+                calculatorExpression.textContent =
+                    "";
+
+                updateCalculatorDisplay();
+
+            }
+
+        }
+    );
+
+
+
+    /*
+     * Calculator history
+     */
+
+    function getCalculatorHistory() {
+
+        try {
+
+            return JSON.parse(
+                localStorage.getItem(
+                    CALCULATOR_HISTORY_KEY
+                )
+            ) || [];
+
+        }
+        catch {
+
+            return [];
+
+        }
+
+    }
+
+
+    function saveCalculatorHistory(
+        history
+    ) {
+
+        localStorage.setItem(
+            CALCULATOR_HISTORY_KEY,
+            JSON.stringify(history)
+        );
+
+    }
+
+
+    function addCalculatorHistory(
+        expression,
+        result
+    ) {
+
+        const history =
+            getCalculatorHistory();
+
+
+        history.unshift({
+
+            id:
+                Date.now().toString() +
+                Math.random()
+                    .toString(16)
+                    .slice(2),
+
+            expression,
+
+            result,
+
+            date:
+                new Date()
+                    .toLocaleString()
+
+        });
+
+
+        saveCalculatorHistory(
+            history.slice(0, 100)
+        );
+
+
+        renderCalculatorHistory();
+
+    }
+
+
+    function deleteCalculatorHistory(
+        id
+    ) {
+
+        const updated =
+            getCalculatorHistory()
+                .filter(
+                    item =>
+                        item.id !== id
+                );
+
+
+        saveCalculatorHistory(updated);
+
+        renderCalculatorHistory();
+
+    }
+
+
+    function renderCalculatorHistory() {
+
+        const list =
+            document.getElementById(
+                "calculatorHistoryList"
+            );
+
+        const count =
+            document.getElementById(
+                "calculatorHistoryCount"
+            );
+
+        const history =
+            getCalculatorHistory();
+
+
+        count.textContent =
+            history.length;
+
+
+        list.innerHTML = "";
+
+
+        if (!history.length) {
+
+            const empty =
+                document.createElement("div");
+
+            empty.className =
+                "empty-state";
+
+            empty.textContent =
+                "No calculations yet.";
+
+            list.appendChild(empty);
+
+            return;
+
+        }
+
+
+        history.forEach(item => {
+
+            const row =
+                document.createElement("div");
+
+            row.className =
+                "history-item";
+
+
+            const content =
+                document.createElement("div");
+
+            content.className =
+                "history-content";
+
+
+            const expression =
+                document.createElement("div");
+
+            expression.className =
+                "history-expression";
+
+            expression.textContent =
+                prettyExpression(
+                    item.expression
+                );
+
+
+            const result =
+                document.createElement("div");
+
+            result.className =
+                "history-result";
+
+            result.textContent =
+                `= ${item.result}`;
+
+
+            const date =
+                document.createElement("div");
+
+            date.className =
+                "history-date";
+
+            date.textContent =
+                item.date;
+
+
+            content.append(
+                expression,
+                result,
+                date
+            );
+
+
+            const deleteButton =
+                document.createElement(
+                    "button"
+                );
+
+            deleteButton.className =
+                "delete-history";
+
+            deleteButton.textContent =
+                "Delete";
+
+
+            deleteButton.addEventListener(
+                "click",
+                () => {
+
+                    deleteCalculatorHistory(
+                        item.id
+                    );
+
+                }
+            );
+
+
+            row.append(
+                content,
+                deleteButton
+            );
+
+
+            list.appendChild(row);
+
+        });
+
+    }
+
+
+    document
+        .getElementById(
+            "toggleCalculatorHistory"
+        )
+        .addEventListener(
+            "click",
+            function () {
+
+                const list =
+                    document.getElementById(
+                        "calculatorHistoryList"
+                    );
+
+                const hidden =
+                    list.classList.toggle(
+                        "hidden"
+                    );
+
+
+                this.textContent =
+                    hidden
+                        ? "Show"
+                        : "Hide";
+
+            }
+        );
+
+
+    document
+        .getElementById(
+            "clearCalculatorHistory"
+        )
+        .addEventListener(
+            "click",
+            () => {
+
+                if (
+                    !getCalculatorHistory()
+                        .length
+                ) {
+                    return;
+                }
+
+
+                if (
+                    !confirm(
+                        "Delete all calculator history?"
+                    )
+                ) {
+                    return;
+                }
+
+
+                localStorage.removeItem(
+                    CALCULATOR_HISTORY_KEY
+                );
+
+
+                renderCalculatorHistory();
+
+            }
+        );
+
+
+
+    /*
+     * =====================================================
+     * PERCENTAGE
+     * =====================================================
+     */
+
+    const PERCENTAGE_HISTORY_KEY =
+        "utilityPercentageHistory";
+
+
+    function getPercentageHistory() {
+
+        try {
+
+            return JSON.parse(
+                localStorage.getItem(
+                    PERCENTAGE_HISTORY_KEY
+                )
+            ) || [];
+
+        }
+        catch {
+
+            return [];
+
+        }
+
+    }
+
+
+    function savePercentageHistory(
+        history
+    ) {
+
+        localStorage.setItem(
+            PERCENTAGE_HISTORY_KEY,
+            JSON.stringify(history)
+        );
+
+    }
+
+
+    function addPercentageHistory(
+        expression,
+        result
+    ) {
+
+        const history =
+            getPercentageHistory();
+
+
+        history.unshift({
+
+            id:
+                Date.now().toString() +
+                Math.random()
+                    .toString(16)
+                    .slice(2),
+
+            expression,
+
+            result,
+
+            date:
+                new Date()
+                    .toLocaleString()
+
+        });
+
+
+        savePercentageHistory(
+            history.slice(0, 100)
+        );
+
+
+        renderPercentageHistory();
+
+    }
+
+
+
+    /*
+     * What is X% of Y?
+     */
+
+    document
+        .getElementById(
+            "percentOfButton"
+        )
+        .addEventListener(
+            "click",
+            () => {
+
+                const percentage =
+                    readNumber(
+                        "percentValue"
+                    );
+
+                const total =
+                    readNumber(
+                        "percentTotal"
+                    );
+
+                const output =
+                    document.getElementById(
+                        "percentOfResult"
+                    );
+
+
+                if (
+                    percentage === null ||
+                    total === null
+                ) {
+
+                    output.textContent =
+                        "Enter valid numbers.";
+
+                    output.classList.add(
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+
+                const result =
+                    total *
+                    percentage /
+                    100;
+
+
+                const formatted =
+                    formatNumber(result);
+
+
+                const display =
+                    `${percentage}% of ${total} = ${formatted}`;
+
+
+                output.textContent =
+                    display;
+
+                output.classList.remove(
+                    "error"
+                );
+
+
+                addPercentageHistory(
+                    `${percentage}% of ${total}`,
+                    formatted
+                );
+
+            }
+        );
+
+
+
+    /*
+     * X is what percent of Y?
+     */
+
+    document
+        .getElementById(
+            "whatPercentButton"
+        )
+        .addEventListener(
+            "click",
+            () => {
+
+                const part =
+                    readNumber(
+                        "partValue"
+                    );
+
+                const whole =
+                    readNumber(
+                        "wholeValue"
+                    );
+
+                const output =
+                    document.getElementById(
+                        "whatPercentResult"
+                    );
+
+
+                if (
+                    part === null ||
+                    whole === null
+                ) {
+
+                    output.textContent =
+                        "Enter valid numbers.";
+
+                    output.classList.add(
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+
+                if (
+                    whole === 0
+                ) {
+
+                    output.textContent =
+                        "Total cannot be zero.";
+
+                    output.classList.add(
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+
+                const percentage =
+                    (
+                        part /
+                        whole
+                    ) * 100;
+
+
+                const formatted =
+                    formatNumber(
+                        percentage
+                    ) + "%";
+
+
+                output.textContent =
+                    `${part} is ${formatted} of ${whole}`;
+
+                output.classList.remove(
+                    "error"
+                );
+
+
+                addPercentageHistory(
+                    `${part} is what percent of ${whole}`,
+                    formatted
+                );
+
+            }
+        );
+
+
+
+    /*
+     * Percentage change
+     */
+
+    document
+        .getElementById(
+            "percentageChangeButton"
+        )
+        .addEventListener(
+            "click",
+            () => {
+
+                const oldValue =
+                    readNumber(
+                        "oldValue"
+                    );
+
+                const newValue =
+                    readNumber(
+                        "newValue"
+                    );
+
+                const output =
+                    document.getElementById(
+                        "percentageChangeResult"
+                    );
+
+
+                if (
+                    oldValue === null ||
+                    newValue === null
+                ) {
+
+                    output.textContent =
+                        "Enter valid numbers.";
+
+                    output.classList.add(
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+
+                if (
+                    oldValue === 0
+                ) {
+
+                    output.textContent =
+                        "Starting value cannot be zero.";
+
+                    output.classList.add(
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+
+                const percentage =
+                    (
+                        (
+                            newValue -
+                            oldValue
+                        ) /
+                        Math.abs(oldValue)
+                    ) * 100;
+
+
+                let result;
+
+
+                if (
+                    percentage > 0
+                ) {
+
+                    result =
+                        `${formatNumber(
+                            Math.abs(
+                                percentage
+                            )
+                        )}% increase`;
+
+                }
+                else if (
+                    percentage < 0
+                ) {
+
+                    result =
+                        `${formatNumber(
+                            Math.abs(
+                                percentage
+                            )
+                        )}% decrease`;
+
+                }
+                else {
+
+                    result =
+                        "0% change";
+
+                }
+
+
+                output.textContent =
+                    result;
+
+                output.classList.remove(
+                    "error"
+                );
+
+
+                addPercentageHistory(
+                    `From ${oldValue} to ${newValue}`,
+                    result
+                );
+
+            }
+        );
+
+
+
+    /*
+     * Percentage history
+     */
+
+    function deletePercentageHistory(
+        id
+    ) {
+
+        const updated =
+            getPercentageHistory()
+                .filter(
+                    item =>
+                        item.id !== id
+                );
+
+
+        savePercentageHistory(
+            updated
+        );
+
+        renderPercentageHistory();
+
+    }
+
+
+    function renderPercentageHistory() {
+
+        const list =
+            document.getElementById(
+                "percentageHistoryList"
+            );
+
+        const count =
+            document.getElementById(
+                "percentageHistoryCount"
+            );
+
+        const history =
+            getPercentageHistory();
+
+
+        count.textContent =
+            history.length;
+
+
+        list.innerHTML = "";
+
+
+        if (!history.length) {
+
+            const empty =
+                document.createElement("div");
+
+            empty.className =
+                "empty-state";
+
+            empty.textContent =
+                "No calculations yet.";
+
+            list.appendChild(empty);
+
+            return;
+
+        }
+
+
+        history.forEach(item => {
+
+            const row =
+                document.createElement(
+                    "div"
+                );
+
+            row.className =
+                "history-item";
+
+
+            const content =
+                document.createElement(
+                    "div"
+                );
+
+            content.className =
+                "history-content";
+
+
+            const expression =
+                document.createElement(
+                    "div"
+                );
+
+            expression.className =
+                "history-expression";
+
+            expression.textContent =
+                item.expression;
+
+
+            const result =
+                document.createElement(
+                    "div"
+                );
+
+            result.className =
+                "history-result";
+
+            result.textContent =
+                item.result;
+
+
+            const date =
+                document.createElement(
+                    "div"
+                );
+
+            date.className =
+                "history-date";
+
+            date.textContent =
+                item.date;
+
+
+            content.append(
+                expression,
+                result,
+                date
+            );
+
+
+            const deleteButton =
+                document.createElement(
+                    "button"
+                );
+
+            deleteButton.className =
+                "delete-history";
+
+            deleteButton.textContent =
+                "Delete";
+
+
+            deleteButton.addEventListener(
+                "click",
+                () => {
+
+                    deletePercentageHistory(
+                        item.id
+                    );
+
+                }
+            );
+
+
+            row.append(
+                content,
+                deleteButton
+            );
+
+
+            list.appendChild(row);
+
+        });
+
+    }
+
+
+    document
+        .getElementById(
+            "togglePercentageHistory"
+        )
+        .addEventListener(
+            "click",
+            function () {
+
+                const list =
+                    document.getElementById(
+                        "percentageHistoryList"
+                    );
+
+                const hidden =
+                    list.classList.toggle(
+                        "hidden"
+                    );
+
+
+                this.textContent =
+                    hidden
+                        ? "Show"
+                        : "Hide";
+
+            }
+        );
+
+
+    document
+        .getElementById(
+            "clearPercentageHistory"
+        )
+        .addEventListener(
+            "click",
+            () => {
+
+                if (
+                    !getPercentageHistory()
+                        .length
+                ) {
+                    return;
+                }
+
+
+                if (
+                    !confirm(
+                        "Delete all percentage history?"
+                    )
+                ) {
+                    return;
+                }
+
+
+                localStorage.removeItem(
+                    PERCENTAGE_HISTORY_KEY
+                );
+
+
+                renderPercentageHistory();
+
+            }
+        );
+
+
+
+    /*
+     * =====================================================
+     * TIMES TABLE
+     * =====================================================
+     */
+
+    const timesNumber =
+        document.getElementById(
+            "timesNumber"
+        );
+
+    const timesTable =
+        document.getElementById(
+            "timesTable"
+        );
+
+
+    function renderTimesTable() {
+
+        const number =
+            Number(
+                timesNumber.value
+            );
+
+
+        timesTable.innerHTML = "";
+
+
+        for (
+            let multiplier = 1;
+            multiplier <= 10;
+            multiplier++
+        ) {
+
+            const row =
+                document.createElement(
+                    "div"
+                );
+
+            row.className =
+                "times-row";
+
+
+            const left =
+                document.createElement(
+                    "div"
+                );
+
+            left.className =
+                "times-left";
+
+            left.textContent =
+                `${number} × ${multiplier}`;
+
+
+            const equals =
+                document.createElement(
+                    "div"
+                );
+
+            equals.className =
+                "times-equals";
+
+            equals.textContent =
+                "=";
+
+
+            const answer =
+                document.createElement(
+                    "div"
+                );
+
+            answer.className =
+                "times-answer";
+
+            answer.textContent =
+                number * multiplier;
+
+
+            row.append(
+                left,
+                equals,
+                answer
+            );
+
+
+            timesTable.appendChild(
+                row
+            );
+
+        }
+
+    }
+
+
+    timesNumber.addEventListener(
+        "change",
+        renderTimesTable
+    );
+
+
+
+    /*
+     * =====================================================
+     * BASE64
+     * =====================================================
+     */
+
     function encodeBase64(text) {
-        const bytes = new TextEncoder().encode(text);
+
+        const bytes =
+            new TextEncoder()
+                .encode(text);
 
         let binary = "";
 
-        for (const byte of bytes) {
-            binary += String.fromCharCode(byte);
+
+        for (
+            const byte of bytes
+        ) {
+
+            binary +=
+                String.fromCharCode(
+                    byte
+                );
+
         }
 
+
         return btoa(binary);
+
     }
 
 
-    /*
-     * UTF-8 safe Base64 decoder
-     */
     function decodeBase64(base64) {
-        const binary = atob(base64);
 
-        const bytes = Uint8Array.from(
-            binary,
-            char => char.charCodeAt(0)
-        );
+        const binary =
+            atob(base64);
 
-        return new TextDecoder().decode(bytes);
+        const bytes =
+            Uint8Array.from(
+                binary,
+                character =>
+                    character.charCodeAt(0)
+            );
+
+
+        return new TextDecoder()
+            .decode(bytes);
+
     }
+
 
 
     /*
      * Encode
      */
+
     document
-        .getElementById("encodeButton")
-        .addEventListener("click", function () {
+        .getElementById(
+            "encodeButton"
+        )
+        .addEventListener(
+            "click",
+            () => {
 
-            const input =
-                document.getElementById("encodeInput").value;
+                const input =
+                    document.getElementById(
+                        "encodeInput"
+                    ).value;
 
-            const output =
-                document.getElementById("encodedOutput");
+                const output =
+                    document.getElementById(
+                        "encodedOutput"
+                    );
 
-            if (!input) {
-                output.textContent = "Please enter text to encode.";
-                output.classList.add("error");
-                return;
+
+                if (!input) {
+
+                    output.textContent =
+                        "Enter text to encode.";
+
+                    output.classList.add(
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+
+                output.textContent =
+                    encodeBase64(input);
+
+                output.classList.remove(
+                    "error"
+                );
+
             }
+        );
 
-            try {
-                const encoded = encodeBase64(input);
-
-                output.textContent = encoded;
-                output.classList.remove("error");
-
-            } catch (error) {
-                output.textContent = "Unable to encode text.";
-                output.classList.add("error");
-            }
-        });
 
 
     /*
      * Decode
      */
+
     document
-        .getElementById("decodeButton")
-        .addEventListener("click", function () {
+        .getElementById(
+            "decodeButton"
+        )
+        .addEventListener(
+            "click",
+            () => {
 
-            const input =
-                document.getElementById("decodeInput").value.trim();
+                const input =
+                    document.getElementById(
+                        "decodeInput"
+                    )
+                    .value
+                    .trim();
 
-            const output =
-                document.getElementById("decodedOutput");
+                const output =
+                    document.getElementById(
+                        "decodedOutput"
+                    );
 
-            if (!input) {
-                output.textContent = "Please enter Base64 to decode.";
-                output.classList.add("error");
-                return;
+
+                if (!input) {
+
+                    output.textContent =
+                        "Enter Base64 to decode.";
+
+                    output.classList.add(
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+
+                try {
+
+                    output.textContent =
+                        decodeBase64(input);
+
+                    output.classList.remove(
+                        "error"
+                    );
+
+                }
+                catch {
+
+                    output.textContent =
+                        "Invalid Base64 value.";
+
+                    output.classList.add(
+                        "error"
+                    );
+
+                }
+
             }
+        );
 
-            try {
-                const decoded = decodeBase64(input);
-
-                output.textContent = decoded;
-                output.classList.remove("error");
-
-            } catch (error) {
-                output.textContent = "Invalid Base64 input.";
-                output.classList.add("error");
-            }
-        });
 
 
     /*
-     * Copy helper
+     * Base64 clear
      */
-    async function copyResult(outputId, messageId) {
+
+    document
+        .getElementById(
+            "clearEncodeButton"
+        )
+        .addEventListener(
+            "click",
+            () => {
+
+                document
+                    .getElementById(
+                        "encodeInput"
+                    )
+                    .value = "";
+
+
+                const output =
+                    document.getElementById(
+                        "encodedOutput"
+                    );
+
+
+                output.textContent =
+                    "Your result will appear here.";
+
+                output.classList.remove(
+                    "error"
+                );
+
+            }
+        );
+
+
+    document
+        .getElementById(
+            "clearDecodeButton"
+        )
+        .addEventListener(
+            "click",
+            () => {
+
+                document
+                    .getElementById(
+                        "decodeInput"
+                    )
+                    .value = "";
+
+
+                const output =
+                    document.getElementById(
+                        "decodedOutput"
+                    );
+
+
+                output.textContent =
+                    "Your result will appear here.";
+
+                output.classList.remove(
+                    "error"
+                );
+
+            }
+        );
+
+
+
+    /*
+     * Copy
+     */
+
+    async function copyText(
+        elementId,
+        button
+    ) {
 
         const text =
-            document.getElementById(outputId).textContent;
+            document.getElementById(
+                elementId
+            ).textContent;
 
-        if (
-            !text ||
-            text === "Waiting for result..."
-        ) {
-            return;
-        }
 
         try {
-            await navigator.clipboard.writeText(text);
 
-            const message =
-                document.getElementById(messageId);
+            await navigator.clipboard
+                .writeText(text);
 
-            message.style.display = "inline";
 
-            setTimeout(() => {
-                message.style.display = "none";
-            }, 1500);
+            const original =
+                button.textContent;
 
-        } catch (error) {
-            console.error("Unable to copy:", error);
+
+            button.textContent =
+                "Copied";
+
+
+            setTimeout(
+                () => {
+
+                    button.textContent =
+                        original;
+
+                },
+                1100
+            );
+
         }
+        catch {
+
+            alert(
+                "Unable to copy automatically. Select the text and copy it manually."
+            );
+
+        }
+
     }
 
 
-    /*
-     * Copy encoded result
-     */
     document
-        .getElementById("copyEncode")
-        .addEventListener("click", function () {
+        .getElementById(
+            "copyEncodedButton"
+        )
+        .addEventListener(
+            "click",
+            function () {
 
-            copyResult(
-                "encodedOutput",
-                "encodeMessage"
-            );
-        });
+                copyText(
+                    "encodedOutput",
+                    this
+                );
+
+            }
+        );
+
+
+    document
+        .getElementById(
+            "copyDecodedButton"
+        )
+        .addEventListener(
+            "click",
+            function () {
+
+                copyText(
+                    "decodedOutput",
+                    this
+                );
+
+            }
+        );
+
 
 
     /*
-     * Copy decoded result
+     * =====================================================
+     * INITIALISE
+     * =====================================================
      */
-    document
-        .getElementById("copyDecode")
-        .addEventListener("click", function () {
 
-            copyResult(
-                "decodedOutput",
-                "decodeMessage"
-            );
-        });
+    renderCalculatorHistory();
+
+    renderPercentageHistory();
+
+    renderTimesTable();
 
 </script>
 
